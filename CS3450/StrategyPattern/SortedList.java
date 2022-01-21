@@ -1,4 +1,4 @@
-package StrategyPattern;
+package CS3450.StrategyPattern;
 
 import java.util.ArrayList;
 

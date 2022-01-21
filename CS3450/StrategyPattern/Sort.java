@@ -1,4 +1,4 @@
-package StrategyPattern;
+package CS3450.StrategyPattern;
 
 /**
  * This is our Super Class Sort. I decided to make it an interface instead of a abstract class.

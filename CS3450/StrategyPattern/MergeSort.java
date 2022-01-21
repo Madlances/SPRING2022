@@ -1,4 +1,4 @@
-package StrategyPattern;
+package CS3450.StrategyPattern;
 
 /**
  * This is our MergeSort class. This inherits the super class Sort

@@ -4,7 +4,7 @@
  * Program 1: Strategy Pattern
  */
 
-package StrategyPattern;
+package CS3450.StrategyPattern;
 
 import java.util.Scanner;
 
