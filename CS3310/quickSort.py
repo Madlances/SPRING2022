@@ -1,5 +1,7 @@
 # Quick Sort
+import numpy as np
 from random import randint
+from matplotlib import pyplot as plt
  
 def partition(arr,low,high):  
     global counter 
@@ -38,19 +40,51 @@ def quickSort(arr,low,high):
         quickSort(arr, pi+1, high)  
          
 counter = [0]
-# TODO: plot each of these
 arr = [randint(0, 256) for _ in range(256)]
 arr2 = [randint(0, 512) for _ in range(512)]
 arr3 = [randint(0, 1024) for _ in range(1024)]
+plt.title("Array of Size 256") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 256), arr) 
+plt.show()
+
+plt.title("Array of Size 512") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 512), arr2) 
+plt.show()
+
+plt.title("Array of Size 1024") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 1024), arr3) 
+plt.show()
 
 n = len(arr)
 n2 = len(arr2)
 n3 = len(arr3)
 
-# TODO: plot the sorted arrays 
-quickSort(arr, 0, n-1)  
+quickSort(arr, 0, n-1)
+plt.title("Array of Size 256 Quick Sorted") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 256), arr) 
+plt.show()
 print("# of times the basic operation, for Quick Sort, is performed of array 1 of size 256: %d" %counter[0])
+
 quickSort(arr2, 0, n2-1)
+plt.title("Array of Size 512 Quick Sorted") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 512), arr2) 
+plt.show()
 print("# of times the basic operation, for Quick Sort, is performed of array 2 of size 512: %d" %counter[0])
+
 quickSort(arr3, 0, n3-1)
+plt.title("Array of Size 1024 Quick Sorted") 
+plt.xlabel("x axis") 
+plt.ylabel("y axis") 
+plt.plot(np.arange(0, 1024), arr3) 
+plt.show()
 print("# of times the basic operation, for Quick Sort, is performed of array 3 of size 1024: %d" %counter[0])
