@@ -2,6 +2,7 @@
 import numpy as np
 from random import randint
 from matplotlib import pyplot as plt
+from tabulate import tabulate
 
 
 def merge(arr, l, m, r):  
@@ -62,7 +63,9 @@ def mergeSort(arr,l,r):
   mergeSort(arr, m+1, r)  
   merge(arr, l, m, r)  
  
-counter = [0] 
+counter = [0]
+
+data = []
 
 arr = [randint(0, 256) for _ in range(256)]
 arr2 = [randint(0, 512) for _ in range(512)]
@@ -96,6 +99,7 @@ plt.ylabel("y axis")
 plt.plot(np.arange(0, 256), arr) 
 plt.show()
 print("# of times the basic operation, for Merge Sort, is performed of array 1 of size 256: %d" %counter[0])
+data.append(['256', counter[0]])
 
 mergeSort(arr2, 0, n2-1)
 plt.title("Array of Size 512 Merge Sorted") 
@@ -104,6 +108,7 @@ plt.ylabel("y axis")
 plt.plot(np.arange(0, 512), arr2) 
 plt.show()
 print("# of times the basic operation, for Merge Sort, is performed of array 2 of size 512: %d" %counter[0])
+data.append(['512', counter[0]])
 
 mergeSort(arr3, 0, n3-1)
 plt.title("Array of Size 1024 Merge Sorted") 
@@ -111,4 +116,8 @@ plt.xlabel("x axis")
 plt.ylabel("y axis") 
 plt.plot(np.arange(0, 1024), arr3) 
 plt.show()
-print("# of times the basic operation, for Merge Sort, is performed of array 3 of size 1024: %d" %counter[0])
+print("# of times the basic operation, for Merge Sort, is performed of array 3 of size 1024: %d\n" %counter[0])
+data.append(['1024', counter[0]])
+
+print("Merge Sort Table:")
+print(tabulate(data, headers=["Size of Array", "# of times the basic operation"]))
