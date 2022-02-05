@@ -27,7 +27,23 @@
         ></script>
 
         <!-- Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
+
+        <!-- external JS file -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let btn = document.getElementById("myBtn");
+                let element = document.getElementById("myToast");
+                let modal = document.getElementsByClassName();
+
+                // Create toast instance
+                let myToast = new bootstrap.Toast(element);
+
+                btn.addEventListener("click", function () {
+                    myToast.show();
+                });
+            });
+        </script>
 
         <title>Super Smash Bros League</title>
     </head>
@@ -115,8 +131,17 @@
                             <td>(111)-111-1111</td>
                             <td>2</td>
                             <td>
-                                <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal"><i class="bi bi-trash2-fill"></i></button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmationModal"
+                                >
+                                    <i class="bi bi-trash2-fill"></i>
+                                </button>
                             </td>
                         </tr>
 
@@ -126,8 +151,17 @@
                             <td>(666)-666-6666</td>
                             <td>2</td>
                             <td>
-                                <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal"><i class="bi bi-trash2-fill"></i></button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmationModal"
+                                >
+                                    <i class="bi bi-trash2-fill"></i>
+                                </button>
                             </td>
                         </tr>
 
@@ -137,83 +171,111 @@
                             <td>(123)-456-7890</td>
                             <td>2</td>
                             <td>
-                                <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal"><i class="bi bi-trash2-fill"></i></button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmationModal"
+                                >
+                                    <i class="bi bi-trash2-fill"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <!-- Confirmation Modal -->
-                <div class="modal fade" id="confirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div
+                    class="modal fade"
+                    id="confirmationModal"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="confirmationModalLabel"
+                    aria-hidden="true"
+                >
                     <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="confirmationModalLabel">Delete Team</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmationModalLabel">Delete Team</h5>
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div class="modal-body">Are you sure you want to delete this Team?</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-success" id="myBtn">Yes</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                          Are you sure you want to delete this Team?
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                          <button type="button" class="btn btn-success">Yes</button>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                    <div class="toast position-absolute top-0 end-0" id="myToast">
+                        <div class="toast-header">
+                            <strong class="me-auto"><i class="bi-gift-fill"></i> We miss you!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="text-center text-white fixed-bottom" style="background-color: #f1f1f1;">
+    <footer class="text-center text-white fixed-bottom" style="background-color: #f1f1f1">
         <!-- Grid container -->
         <div class="container pt-4">
-          <!-- Section: Social media -->
-          <section class="mb-4">
-            <!-- Facebook -->
-            <a
-              class="text-center text-dark text-dark m-1"
-              href="#"
-              style="font-size: 2rem"
-              data-mdb-ripple-color="dark"
-              ><i class="bi bi-facebook"></i
-            ></a>
-      
-            <!-- Twitter -->
-            <a
-              class="text-center text-dark text-dark m-1"
-              href="#"
-              style="font-size: 2rem"
-              data-mdb-ripple-color="dark"
-              ><i class="bi bi-twitter"></i
-            ></a>
-      
-            <!-- Google -->
-            <a
-              class="text-center text-dark text-dark m-1"
-              href="#"
-              style="font-size: 2rem"
-              data-mdb-ripple-color="dark"
-              ><i class="bi bi-google"></i
-            ></a>
-      
-            <!-- Instagram -->
-            <a
-              class="text-center text-dark text-dark m-1"
-              href="#"
-              style="font-size: 2rem"
-              data-mdb-ripple-color="dark"
-              ><i class="bi bi-instagram"></i
-            ></a>
-          </section>
-          <!-- Section: Social media -->
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a
+                    class="text-center text-dark text-dark m-1"
+                    href="#"
+                    style="font-size: 2rem"
+                    data-mdb-ripple-color="dark"
+                    ><i class="bi bi-facebook"></i
+                ></a>
+
+                <!-- Twitter -->
+                <a
+                    class="text-center text-dark text-dark m-1"
+                    href="#"
+                    style="font-size: 2rem"
+                    data-mdb-ripple-color="dark"
+                    ><i class="bi bi-twitter"></i
+                ></a>
+
+                <!-- Google -->
+                <a
+                    class="text-center text-dark text-dark m-1"
+                    href="#"
+                    style="font-size: 2rem"
+                    data-mdb-ripple-color="dark"
+                    ><i class="bi bi-google"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a
+                    class="text-center text-dark text-dark m-1"
+                    href="#"
+                    style="font-size: 2rem"
+                    data-mdb-ripple-color="dark"
+                    ><i class="bi bi-instagram"></i
+                ></a>
+            </section>
+            <!-- Section: Social media -->
         </div>
         <!-- Grid container -->
-      
+
         <!-- Copyright -->
-        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2020 Copyright: Super Smash Bros League
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2020 Copyright: Super Smash Bros League
         </div>
         <!-- Copyright -->
-      </footer>
+    </footer>
 </html>
