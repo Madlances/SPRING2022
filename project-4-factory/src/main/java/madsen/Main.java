@@ -1,11 +1,23 @@
 package madsen;
 
+/**
+ * @author Kassandra Madsen
+ * CS 3450 Section X01
+ * Project 4 - Factory Pattern
+ */
 import java.util.Scanner;
+
+/**
+ * The main class will get user input, and depending
+ * on if they have a Low or High Res driver it will
+ * Print a document or draw a widget with only the low
+ * res or high res driver.
+ */
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DriverFactory driverFactory = null;
+        DriverFactory driverFactory = null; // set to null initially so we can call the right factory
         System.out.print("Do you have a Low or High Res Driver? (l or h): ");
         String driver = scanner.nextLine().toLowerCase();
         while(true) {
@@ -36,6 +48,6 @@ public class Main {
                 System.out.print("Type 'd' to print a document,\n'w' to draw a widget,\n or 'q' to quit: ");
             }
         }
-        scanner.close();
+        scanner.close(); // close the scanner
     }
 }
