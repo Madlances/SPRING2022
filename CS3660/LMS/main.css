@@ -41,6 +41,16 @@ img,
     font-family: custom;
 }
 
+.imgPopover {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+}
+
+#popover {
+    background-color: transparent;
+}
+
 @font-face {
     font-family: custom;
     src: url(super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
