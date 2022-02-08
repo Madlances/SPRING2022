@@ -10,7 +10,8 @@ def partition(arr,low,high):
     pivot = arr[high]     # pivot  
    
     for j in range(low , high):  
-   
+        counter[0]+=1
+        
         # If current element is smaller than or  
         # equal to pivot  
         if   arr[j] <= pivot:  
@@ -20,7 +21,6 @@ def partition(arr,low,high):
             arr[i],arr[j] = arr[j],arr[i]
    
     arr[i+1],arr[high] = arr[high],arr[i+1]
-    counter[0]+=1
     return ( i+1 )  
    
 # The main function that implements QuickSort  

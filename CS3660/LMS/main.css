@@ -1,36 +1,44 @@
-  .homeAside {
+.homeAside {
     width: 30%;
     padding-left: 10px;
     margin-left: 10px;
     float: right;
     background-color: black;
-  }
-
-  body {
-      background-image: url("images/1200px-SSBU-Battlefield.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: lightblue;
-      font-family: custom;
-  }
-
-  .table, .text-center, .navbar, img {
-      background-color: lightblue;
-      
-  }
-
-.nav-tabs .nav-link.active,
-
-.nav-tabs .nav-item.show .nav-link {
-
-    color: #FFFFFF;
-    background-color: gray;
-
 }
 
-.highlight1,.highlight2 {
+body {
+    background-image: url("images/1200px-SSBU-Battlefield.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightblue;
+    font-family: custom;
+}
+
+.table,
+.text-center,
+.navbar,
+img,
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: lightblue;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #ffffff;
+    background-color: gray;
+}
+
+.highlight1,
+.highlight2 {
     width: 600px;
     height: 400px;
+}
+
+.popover {
+    background-color: lightblue;
+    font-family: custom;
 }
 
 @font-face {

@@ -145,7 +145,7 @@
                     <h1>Teams</h1>
                     <p>Current Teams Signed Up</p>
                   </div>
-                <div id="alertContainer"></div>
+                <div id="alert"></div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -172,8 +172,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="1"
-                                    data-Name="Ghost Hunters"
+                                    data-team="Ghost Hunters"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -193,8 +192,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="2"
-                                    data-Name="The Pink Puffs"
+                                    data-team="The Pink Puffs"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -214,8 +212,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="3"
-                                    data-Name="Buffet's Bane"
+                                    data-team="Buffet's Bane"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -235,8 +232,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="4"
-                                    data-Name="It's a Mii, Mario!"
+                                    data-team="It's a Mii, Mario!"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -256,8 +252,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="5"
-                                    data-Name="Echoes"
+                                    data-team="Echoes"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -277,8 +272,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="6"
-                                    data-Name="Plant Gang!"
+                                    data-team="Plant Gang!"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -299,8 +293,7 @@
                                     class="btn btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#confirmationModal"
-                                    data-id="7"
-                                    data-Name="Corrupted Visions"
+                                    data-team="Corrupted Visions"
                                 >
                                     <i class="bi bi-trash2-fill"></i>
                                 </button>
@@ -312,25 +305,17 @@
                 <div class="modal fade" id="confirmationModal">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                  
-                        <!-- Modal Header -->
                         <div class="modal-header">
                           <h4 class="modal-title">Delete Team Item</h4>
                           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-                  
-                        <!-- Modal body -->
                         <div class="modal-body">
                           Are you sure you want to delete this Team?
                         </div>
-                  
-                        <!-- Modal footer -->
                         <div class="modal-footer">
-                           <!-- data-bs-dismiss="modal" tells the javscript to hide the modal on click, both 'Yes' and 'No' buttons will hide modal.  I'm placing a specific event handler on the 'Yes' button below-->
-                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                          <button id="confirm" type="button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No.</button>
+                          <button id="confirm" type="button" class="btn btn-success" data-bs-dismiss="modal">Yes!</button>
                         </div>
-                  
                       </div>
                     </div>
                   </div>
