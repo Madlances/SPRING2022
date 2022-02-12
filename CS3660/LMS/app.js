@@ -6,6 +6,7 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 $(document).ready(function () {
     let img = `<img class="imgPopover" src="images/Smash_Ball.png">`;
     ["Samus", "Bayonetta", "Lucas", "Mario", "Pacman", "Kirby", "Luigi"].forEach((name) => {
+        $(`#${name} .btn-danger`).attr("data-coach", name);
         $(`#${name}`).popover({
             title: img + " Team Info",
             trigger: "hover",
@@ -22,14 +23,18 @@ $(document).ready(function (ev) {
     $confModal.on("show.bs.modal", function (ev) {
         let button = ev.relatedTarget;
         let teamName = button.getAttribute("data-team");
+        let coachName = button.getAttribute("data-coach");
         let $confTitle = $(".modal-title");
 
         $confTitle.text(`Delete Team ${teamName}`);
         $confModal.attr("data-team", teamName);
-    });
 
-    $("#confirm").click(function () {
-        alert($confModal.attr("data-team"));
+        $("#confirm")
+            .off("click")
+            .on("click", function () {
+                $(`#${coachName}`).remove();
+                alert($confModal.attr("data-team"));
+            });
     });
 
     function alert(teamName) {
