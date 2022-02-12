@@ -28,353 +28,454 @@
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
-        
-        <!-- my css -->
-        <link rel="stylesheet" href="main.css">
 
-        <title>Super Smash Bros League</title>
+        <!-- my css -->
+        <link rel="stylesheet" href="main.css" />
+
+        <title>Smash Bros League</title>
+        <link class="favicon" rel="icon" href="images/white_smash_ball.png" />
     </head>
     <body>
-    <nav class="navbar navbar-inverse navbar-fixed-to navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img
-                    src="images/Smash_Ball.png"
-                    alt=""
-                    width="30"
-                    height="24"
-                    class="d-inline-block align-text-top"
-                />
-                Super Smash Bros League</a
-            >
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button
-                            class="nav-link active"
-                            id="nav-home-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#nav-home"
-                            type="button"
-                            role="tab"
-                            aria-controls="nav-home"
-                            aria-selected="true"
-                        >
-                            Home
-                        </button>
-                        <button
-                            class="nav-link"
-                            id="nav-features-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#nav-features"
-                            type="button"
-                            role="tab"
-                            aria-controls="nav-features"
-                            aria-selected="false"
-                        >
-                            Teams
-                        </button>
+        <nav class="navbar navbar-inverse navbar-fixed-to navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img
+                        src="images/Smash_Ball.png"
+                        alt=""
+                        width="30"
+                        height="24"
+                        class="d-inline-block align-text-top"
+                    />
+                    Super Smash Bros League</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button
+                                class="nav-link active"
+                                id="nav-home-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-home"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-home"
+                                aria-selected="true"
+                            >
+                                Home
+                            </button>
+                            <button
+                                class="nav-link"
+                                id="nav-features-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-features"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-features"
+                                aria-selected="false"
+                            >
+                                Teams
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="container-fluid">
+                    <aside class="homeAside text-white rounded">
+                        <p>
+                            Schedule:<br />
+                            8am - Coach Meeting 10am - The Pink Puffs vs Buffet's Bane<br />
+                            11am - Echoes vs Corrupted Visions<br />
+                            12am - Lunch @ Peach's Castle<br />
+                            3pm - Plant Gang vs It's a Mii, Mario!<br />
+                            4pm - Dinner @ SuperHappy Tree<br />
+                            6pm - Final Results
+                        </p>
+                    </aside>
+                    <div class="Home mt-4 p-5 bg-secondary text-white rounded">
+                        <h1>About us</h1>
+                        <p>
+                            Super Smash Bros League is a competive gameplay where teams can go against each other and
+                            try to win the Golden Cup.<br />
+                            To do this they will need to fight each other head on.<br />
+                        </p>
+
+                        <h2>Rules</h2>
+                        <ul>
+                            <li>Each team needs to to launch their opponents off the stage and out of bounds.</li>
+                            <li>
+                                To knock out an opposing player, the player must knock that player outside the stage's
+                                boundaries to the right or left.
+                            </li>
+                            <li>
+                                When a player is pushed or hit off the stage, the player can attempt to "recover" by
+                                jumping or use any other object they brought to grab on to the stage.
+                            </li>
+                            <li>
+                                Additionally, some players vary in weight, with lighter palyers being easier to get off
+                                the stage than heavy characters.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div
+                                id="carouselExampleIndicators"
+                                class="carousel carousel-dark slide"
+                                data-bs-ride="carousel"
+                            >
+                                <div class="carousel-indicators">
+                                    <button
+                                        type="button"
+                                        data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="0"
+                                        class="active"
+                                        aria-current="true"
+                                        aria-label="Slide 1"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="1"
+                                        aria-label="Slide 2"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="2"
+                                        aria-label="Slide 3"
+                                    ></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img
+                                            src="images/super-smash-ultimate-inkling-donkey.png"
+                                            class="d-block w-100"
+                                            alt="..."
+                                        />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img
+                                            src="images/20181210-SjLdtlBCXcfsbeZ80SLA.png"
+                                            class="d-block w-100"
+                                            alt="..."
+                                        />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/highlight.jpg" class="d-block w-100" alt="..." />
+                                    </div>
+                                </div>
+                                <button
+                                    class="carousel-control-prev"
+                                    type="button"
+                                    data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide="prev"
+                                >
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button
+                                    class="carousel-control-next"
+                                    type="button"
+                                    data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide="next"
+                                >
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="mt-4 p-5 bg-primary text-white rounded">
+                        <h1 class="Highlights">Highlights:</h1>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <p>
+                                        <img class="highlight1" src="images/20181210-SjLdtlBCXcfsbeZ80SLA.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="col-sm">
+                                    <p>
+                                        <img
+                                            class="highlight2"
+                                            src="images/super-smash-ultimate-inkling-donkey.png"
+                                            alt=""
+                                        />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab">
+                <div class="container-fluid">
+                    <aside class="teamAside text-white rounded">
+                        <p>
+                            Latest Results:<br />
+                            1. The Pink Puffs<br />
+                            2. Buffet's Bane<br />
+                            3. Echoes<br />
+                            4. Corrupted Visions<br />
+                            5. Plant Gang!<br />
+                            6. It's a Mii, Mario!<br />
+                            7. Ghost Hunters
+                        </p>
+                    </aside>
+                    <div class="Teams mt-4 p-5 bg-secondary text-white rounded">
+                        <h1>Teams</h1>
+                        <p>Current Teams Signed Up</p>
+                    </div>
+                    <div id="alert"></div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Team Name</th>
+                                <th scope="col">Coach Name</th>
+                                <th scope="col">Coach Phone</th>
+                                <th scope="col"># of Players</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr id="Luigi" data-bs-content="Coach: Luigi, Phone: (666)-666-6666, # of Players: 1">
+                                <td id="team">Ghost Hunters</td>
+                                <td id="coach">Luigi</td>
+                                <td id="phone">(666)-666-6666</td>
+                                <td id="players">1</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="Ghost Hunters"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Kirby" data-bs-content="Coach: Kirby, Phone: (123)-456-7890, # of Players: 2">
+                                <td id="team">The Pink Puffs</td>
+                                <td id="coach">Kirby</td>
+                                <td id="phone">(123)-456-7890</td>
+                                <td id="players">2</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="The Pink Puffs"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Pacman" data-bs-content="Coach: Pacman, Phone: (555)-555-5555, # of Players: 3">
+                                <td id="team">Buffet's Bane</td>
+                                <td id="coach">Pacman</td>
+                                <td id="phone">(555)-555-5555</td>
+                                <td id="players">3</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="Buffet's Bane"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Mario" data-bs-content="Coach: Mario, Phone: (232)-323-2323, # of Players: 2">
+                                <td id="team">It's a Mii, Mario!</td>
+                                <td id="coach">Mario</td>
+                                <td id="phone">(232)-323-2323</td>
+                                <td id="players">2</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="It's a Mii, Mario!"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Lucas" data-bs-content="Coach: Lucas, Phone: (111)-111-1111, # of Players: 2">
+                                <td id="team">Echoes</td>
+                                <td id="coach">Lucas</td>
+                                <td id="phone">(111)-111-1111</td>
+                                <td id="players">2</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="Echoes"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr
+                                id="Bayonetta"
+                                data-bs-content="Coach: Bayonetta, Phone: (454)-545-4545, # of Players: 2"
+                            >
+                                <td id="team">Plant Gang!</td>
+                                <td id="coach">Bayonetta</td>
+                                <td id="phone">(454)-545-4545</td>
+                                <td id="players">2</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="Plant Gang!"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr id="Samus" data-bs-content="Coach: Samus, Phone: (999)-999-999, # of Players: 2">
+                                <td id="team">Corrupted Visions</td>
+                                <td id="coach">Samus</td>
+                                <td id="phone">(999)-999-9999</td>
+                                <td id="players">2</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmationModal"
+                                        data-team="Corrupted Visions"
+                                    >
+                                        <i class="bi bi-trash2-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Confirmation Modal -->
+                    <div class="modal fade" id="confirmationModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Team Item</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">Are you sure you want to delete this Team?</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No.</button>
+                                    <button id="confirm" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                        Yes!
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="container-fluid">
-                <aside class="homeAside text-white rounded"><p>Schedule:<br>
-                    8am - Coach Meeting
-                    10am - The Pink Puffs vs Buffet's Bane<br>
-                    11am - Echoes vs Corrupted Visions<br>
-                    12am - Lunch @ Peach's Castle<br>
-                    3pm - Plant Gang vs It's a Mii, Mario!<br>
-                    4pm - Dinner @ SuperHappy Tree<br>
-                    6pm - Final Results
-                </p></aside>
-                <div class="mt-4 p-5 bg-primary text-white rounded">
-                    <h1>About us</h1>
-                    <p>Super Smash Bros League is a competive gameplay where teams can go against each other and try to win the Golden Cup.<br>
-                        To do this they will need to fight each other head on.<br>
-                    <h2>Rules</h2><p>Each team needs to to launch their opponents off the stage and out of bounds.<br>
-                        To knock out an opposing player, the player must knock that player outside the stage's boundaries 
-                        to the right or left. <br>When a player is pushed or hit off the stage, the player can attempt to "recover" 
-                        by jumping or use any other object they brought to grab on to the stage. <br>Additionally, some players vary in weight,
-                         with lighter palyers being easier to get off the stage than heavy characters.
-                    </p></p>
-                  </div>
+        <footer class="text-center text-white static-bottom">
+            <!-- Grid container -->
+            <div class="container pt-4">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a
+                        class="text-center text-dark text-dark m-1"
+                        href="#"
+                        style="font-size: 2rem"
+                        data-mdb-ripple-color="dark"
+                        ><i class="bi bi-facebook"></i
+                    ></a>
 
-                  <div class="mt-4 p-5 bg-primary text-white rounded">
-                    <h1>Highlights:</h1>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <p><img class="highlight1" src="images/20181210-SjLdtlBCXcfsbeZ80SLA.png" alt=""></p>
-                            </div>
-                            <div class="col-sm">
-                                <p><img class="highlight2" src="images/super-smash-ultimate-inkling-donkey.png" alt=""></p>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+                    <!-- Twitter -->
+                    <a
+                        class="text-center text-dark text-dark m-1"
+                        href="#"
+                        style="font-size: 2rem"
+                        data-mdb-ripple-color="dark"
+                        ><i class="bi bi-twitter"></i
+                    ></a>
+
+                    <!-- Google -->
+                    <a
+                        class="text-center text-dark text-dark m-1"
+                        href="#"
+                        style="font-size: 2rem"
+                        data-mdb-ripple-color="dark"
+                        ><i class="bi bi-google"></i
+                    ></a>
+
+                    <!-- Instagram -->
+                    <a
+                        class="text-center text-dark text-dark m-1"
+                        href="#"
+                        style="font-size: 2rem"
+                        data-mdb-ripple-color="dark"
+                        ><i class="bi bi-instagram"></i
+                    ></a>
+                </section>
+                <!-- Section: Social media -->
             </div>
-        </div>
-        <div class="tab-pane fade" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab">
-            <div class="container-fluid">
-                <aside class="homeAside text-white rounded"><p>Latest Results:<br>
-                    1. The Pink Puffs<br>
-                2. Buffet's Bane<br>
-                3. Echoes<br>
-                4. Corrupted Visions<br>
-                5. Plant Gang!<br>
-                6. It's a Mii, Mario!<br>
-                7. Ghost Hunters
-                </p></aside>
-                <div class="mt-4 p-5 bg-primary text-white rounded">
-                    <h1>Teams</h1>
-                    <p>Current Teams Signed Up</p>
-                  </div>
-                <div id="alert"></div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Team Name</th>
-                            <th scope="col">Coach Name</th>
-                            <th scope="col">Coach Phone</th>
-                            <th scope="col"># of Players</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
+            <!-- Grid container -->
 
-                    <tbody>
-                        <tr id="Luigi" data-bs-content="Coach: Luigi, Phone: (666)-666-6666, # of Players: 1">
-                            <td id="team">Ghost Hunters</td>
-                            <td id="coach">Luigi</td>
-                            <td id="phone">(666)-666-6666</td>
-                            <td id="players">1</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="Ghost Hunters"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="Kirby" data-bs-content="Coach: Kirby, Phone: (123)-456-7890, # of Players: 2">
-                            <td id="team">The Pink Puffs</td>
-                            <td id="coach">Kirby</td>
-                            <td id="phone">(123)-456-7890</td>
-                            <td id="players">2</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="The Pink Puffs"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="Pacman" data-bs-content="Coach: Pacman, Phone: (555)-555-5555, # of Players: 3">
-                            <td id="team">Buffet's Bane</td>
-                            <td id="coach">Pacman</td>
-                            <td id="phone">(555)-555-5555</td>
-                            <td id="players">3</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="Buffet's Bane"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="Mario" data-bs-content="Coach: Mario, Phone: (232)-323-2323, # of Players: 2">
-                            <td id="team">It's a Mii, Mario!</td>
-                            <td id="coach">Mario</td>
-                            <td id="phone">(232)-323-2323</td>
-                            <td id="players">2</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="It's a Mii, Mario!"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="Lucas" data-bs-content="Coach: Lucas, Phone: (111)-111-1111, # of Players: 2">
-                            <td id="team">Echoes</td>
-                            <td id="coach">Lucas</td>
-                            <td id="phone">(111)-111-1111</td>
-                            <td id="players">2</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="Echoes"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="Bayonetta" data-bs-content="Coach: Bayonetta, Phone: (454)-545-4545, # of Players: 2">
-                            <td id="team">Plant Gang!</td>
-                            <td id="coach">Bayonetta</td>
-                            <td id="phone">(454)-545-4545</td>
-                            <td id="players">2</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="Plant Gang!"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr id="Samus" data-bs-content="Coach: Samus, Phone: (999)-999-999, # of Players: 2">
-                            <td id="team">Corrupted Visions</td>
-                            <td id="coach">Samus</td>
-                            <td id="phone">(999)-999-9999</td>
-                            <td id="players">2</td>
-                            <td>
-                                <button type="button" class="btn btn-success">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#confirmationModal"
-                                    data-team="Corrupted Visions"
-                                >
-                                    <i class="bi bi-trash2-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- Confirmation Modal -->
-                <div class="modal fade" id="confirmationModal">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Delete Team Item</h4>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                          Are you sure you want to delete this Team?
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No.</button>
-                          <button id="confirm" type="button" class="btn btn-success" data-bs-dismiss="modal">Yes!</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <!-- Copyright -->
+            <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2020 Copyright: Super Smash Bros League
             </div>
-        </div>
-    </div>
-
-    <footer class="text-center text-white static-bottom">
-        <!-- Grid container -->
-        <div class="container pt-4">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <a
-                    class="text-center text-dark text-dark m-1"
-                    href="#"
-                    style="font-size: 2rem"
-                    data-mdb-ripple-color="dark"
-                    ><i class="bi bi-facebook"></i
-                ></a>
-
-                <!-- Twitter -->
-                <a
-                    class="text-center text-dark text-dark m-1"
-                    href="#"
-                    style="font-size: 2rem"
-                    data-mdb-ripple-color="dark"
-                    ><i class="bi bi-twitter"></i
-                ></a>
-
-                <!-- Google -->
-                <a
-                    class="text-center text-dark text-dark m-1"
-                    href="#"
-                    style="font-size: 2rem"
-                    data-mdb-ripple-color="dark"
-                    ><i class="bi bi-google"></i
-                ></a>
-
-                <!-- Instagram -->
-                <a
-                    class="text-center text-dark text-dark m-1"
-                    href="#"
-                    style="font-size: 2rem"
-                    data-mdb-ripple-color="dark"
-                    ><i class="bi bi-instagram"></i
-                ></a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2020 Copyright: Super Smash Bros League
-        </div>
-        <!-- Copyright -->
-    </footer>
-</body>
-<!-- Only includes the alert atm -->
-<script src="app.js"></script>
+            <!-- Copyright -->
+        </footer>
+    </body>
+    <!-- Only includes the alert atm -->
+    <script src="app.js"></script>
 </html>

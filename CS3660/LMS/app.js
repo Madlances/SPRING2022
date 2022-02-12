@@ -5,13 +5,15 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 $(document).ready(function () {
     let img = `<img class="imgPopover" src="images/Smash_Ball.png">`;
-    $("#Samus").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Bayonetta").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Lucas").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Mario").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Pacman").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Kirby").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
-    $("#Luigi").popover({ title: img + " Team Info", trigger: "hover", placement: "bottom", html: true });
+    ["Samus", "Bayonetta", "Lucas", "Mario", "Pacman", "Kirby", "Luigi"].forEach((name) => {
+        $(`#${name}`).popover({
+            title: img + " Team Info",
+            trigger: "hover",
+            placement: "bottom",
+            html: true,
+            delay: { show: 200 },
+        });
+    });
 });
 
 $(document).ready(function (ev) {

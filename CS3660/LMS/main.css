@@ -51,6 +51,35 @@ img,
     background-color: transparent;
 }
 
+.alert {
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Teams,
+.Home,
+.Highlights,
+.table,
+footer {
+    opacity: 0.8;
+}
+
+.teamAside {
+    width: 30%;
+    padding-left: 10px;
+    margin-left: 10px;
+    float: right;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.carousel-item {
+    opacity: 0.8;
+}
+
 @font-face {
     font-family: custom;
     src: url(super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
