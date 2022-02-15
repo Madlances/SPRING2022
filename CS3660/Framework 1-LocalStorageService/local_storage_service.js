@@ -117,7 +117,8 @@ class LocalStorageService {
         // if 'perm' param is set to true, you should update the internal model.data
         //with the sorted list, and call 'store' to store in local storage
         //also, store the sort col and direction in the 'app' portion of the model
-        let sortedModel = this.model.data.sort((a, b) => (a.col > b.col) ? 1 : -1);
+        let array = this.cloneObject(this.model.data);
+        let sortedModel = array.sort((a, b) => (a.col > b.col) ? 1 : -1);
 
         if (perm === true) {
             this.model.data = sortedModel;
