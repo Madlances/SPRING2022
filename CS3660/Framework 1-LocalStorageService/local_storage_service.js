@@ -45,6 +45,8 @@ class LocalStorageService {
         //TODO
         //append new object to data store
         // persist in local storage by calling store()
+        this.model.data.push(obj);
+        this.store();
     }
     read(getId) {
         //TODO: returns the item in the array with id=getId, null if it is not found
@@ -60,7 +62,8 @@ class LocalStorageService {
         //find index of object in array
         //update object with new contents
         // persist in local storage by calling store()
-        this.model.data.findIndex(obj);
+        this.getItemIndex(obj) = obj;
+        this.store();
     }
 
     delete(removeId) {
@@ -68,6 +71,9 @@ class LocalStorageService {
         //find index of object in array
         //remove object with specified id from model.data (splice?)
         // persist in local storage by calling store()
+        let index = this.model.data.findIndex(removeId);
+        this.model.data.splice(index, 1);
+        this.store();
     }
 
     //LocalStorage Functions
@@ -78,7 +84,6 @@ class LocalStorageService {
         //(use utility function 'cloneObject' at bottom of file)
         this.clear();
         this.model = this.cloneObject(this.origModel);
-
     }
     clear() {
         //TODO: should clear local storage
@@ -86,7 +91,7 @@ class LocalStorageService {
     }
     store() {
         //TODO: should store your model in localStorage
-        localStorage.setItem(this.key, this.model);
+        localStorage.setItem(this.key, JSON.stringify(this.model));
     }
     retrieve() {
         //TODO
@@ -98,8 +103,10 @@ class LocalStorageService {
         if (result !== null) {
             this.model = JSON.parse(result);
             return true;
+        } else {
+            return false;
         }
-        return false; //returning false for now
+        // return false; //returning false for now
     }
 
     //Sorting and Filtering Functions
@@ -110,6 +117,16 @@ class LocalStorageService {
         // if 'perm' param is set to true, you should update the internal model.data
         //with the sorted list, and call 'store' to store in local storage
         //also, store the sort col and direction in the 'app' portion of the model
+        let sortedModel = this.model.data.sort((a, b) => (a.col > b.col) ? 1 : -1);
+
+        if (perm === true) {
+            this.model.data = sortedModel;
+            this.model.data.app.sortCol = col;
+            this.model.data.app.sortDir = direction;
+            this.store();
+        }
+        return sortedModel;
+        
     }
 
     filter(filterObj) {
@@ -118,6 +135,8 @@ class LocalStorageService {
         //will filter model.data with.
         //See MDN array 'filter' function documentation
         //Example call: storageSvc.filter({coachLicenseLevel:1,coachLast:"Jenson"});
+        let filteredModel = this.model.data.filter(filterObj);
+        return filteredModel;
     }
 
     //Utility functions-IMPLEMENT THESE FIRST
@@ -126,7 +145,7 @@ class LocalStorageService {
         //return index of team with given id
         //see MDN array 'find' documentation
         //created separate function for this since multiple methods need to get the index of an item
-        return this.model.data.findIndex(item => item.id === id);
+        return this.model.data.findIndex((item) => item.id === id);
     }
     cloneObject(obj) {
         //util function for returning a copy of an object
