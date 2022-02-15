@@ -33,7 +33,7 @@ class LocalStorageService {
     }
     get size() {
         //TODO: should return the number of items in model.data
-        return this.model.data.size();
+        return this.model.data.length();
     }
     get list() {
         //TODO: return the model.data array
@@ -48,12 +48,19 @@ class LocalStorageService {
     }
     read(getId) {
         //TODO: returns the item in the array with id=getId, null if it is not found
+        let index = this.getItemIndex(getId);
+        if (index !== -1) {
+            return this.model[index];
+        } else {
+            return null;
+        }
     }
     update(obj) {
         //TODO
         //find index of object in array
         //update object with new contents
         // persist in local storage by calling store()
+        this.model.data.findIndex(obj);
     }
 
     delete(removeId) {
@@ -69,12 +76,17 @@ class LocalStorageService {
         //should clear local storage
         //should restore model from origModel
         //(use utility function 'cloneObject' at bottom of file)
+        this.clear();
+        this.model = this.cloneObject(this.origModel);
+
     }
     clear() {
         //TODO: should clear local storage
+        localStorage.clear();
     }
     store() {
         //TODO: should store your model in localStorage
+        localStorage.setItem(this.key, this.model);
     }
     retrieve() {
         //TODO
@@ -82,6 +94,11 @@ class LocalStorageService {
         //If data retrieved from LocalStorage, updates this.model
         //hint:  remember to 'parse' the LocalStorage string value back into an object!
         //return true if model retrieved from localStorage, false if key wasn't found in localStorage
+        let result = localStorage.getItem(this.key);
+        if (result !== null) {
+            this.model = JSON.parse(result);
+            return true;
+        }
         return false; //returning false for now
     }
 
@@ -109,6 +126,7 @@ class LocalStorageService {
         //return index of team with given id
         //see MDN array 'find' documentation
         //created separate function for this since multiple methods need to get the index of an item
+        return this.model.data.findIndex(item => item.id === id);
     }
     cloneObject(obj) {
         //util function for returning a copy of an object
