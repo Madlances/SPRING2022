@@ -33,7 +33,7 @@ class LocalStorageService {
     }
     get size() {
         //TODO: should return the number of items in model.data
-        return this.model.data.length();
+        return this.model.data.length;
     }
     get list() {
         //TODO: return the model.data array
@@ -52,7 +52,7 @@ class LocalStorageService {
         //TODO: returns the item in the array with id=getId, null if it is not found
         let index = this.getItemIndex(getId);
         if (index !== -1) {
-            return this.model[index];
+            return this.model.data[index];
         } else {
             return null;
         }
@@ -62,7 +62,12 @@ class LocalStorageService {
         //find index of object in array
         //update object with new contents
         // persist in local storage by calling store()
-        this.getItemIndex(obj) = obj;
+        let index = this.getItemIndex(obj.id);
+        if (index === -1) {
+            this.model.data.push(obj);
+        } else {
+            this.model.data[index] = obj;
+        }
         this.store();
     }
 
@@ -71,7 +76,8 @@ class LocalStorageService {
         //find index of object in array
         //remove object with specified id from model.data (splice?)
         // persist in local storage by calling store()
-        let index = this.model.data.findIndex(removeId);
+        this.clear();
+        let index = this.getItemIndex(removeId);
         this.model.data.splice(index, 1);
         this.store();
     }
@@ -118,16 +124,19 @@ class LocalStorageService {
         //with the sorted list, and call 'store' to store in local storage
         //also, store the sort col and direction in the 'app' portion of the model
         let array = this.cloneObject(this.model.data);
-        let sortedModel = array.sort((a, b) => (a.col > b.col) ? 1 : -1);
-
-        if (perm === true) {
+        let sortedModel = array.sort((a, b) => {
+            if (direction == "asc") {
+                return a[col] > b[col] ? 1 : -1;
+            }
+            return a[col] < b[col] ? 1 : -1;
+        });
+        if (perm) {
             this.model.data = sortedModel;
-            this.model.data.app.sortCol = col;
-            this.model.data.app.sortDir = direction;
+            this.sortCol = col;
+            this.sortDir = direction;
             this.store();
         }
         return sortedModel;
-        
     }
 
     filter(filterObj) {
@@ -136,7 +145,13 @@ class LocalStorageService {
         //will filter model.data with.
         //See MDN array 'filter' function documentation
         //Example call: storageSvc.filter({coachLicenseLevel:1,coachLast:"Jenson"});
-        let filteredModel = this.model.data.filter(filterObj);
+        let filteredModel = this.model.data.filter((obj) => {
+            for (let key in filterObj) {
+                if (filterObj.hasOwnProperty(key)) {
+                    return obj[key] === filterObj[key];
+                }
+            }
+        });
         return filteredModel;
     }
 
