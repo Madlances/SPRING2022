@@ -4,8 +4,8 @@ from collections import deque
 from tabulate import tabulate
 
 counter = 0
-x = "CATS"
-y = "CAT"
+x = "1234"
+y = "1515"
 data = []
 
 def basicOps():
@@ -115,9 +115,10 @@ def print_alignment(x, y, alignment):
     ))
 
 alignment = align_fast(x,y)
+print("Alignment of Dynamic Programming:")
 print_alignment(x, y, alignment)
 print("Total Cost/Penality for Dynamic Programming: %s" %alignment_score(x, y, alignment))
-print("Number of Basic Operations for Dynamic Programming: %s" %basicOps())
+print("")
 print("Dynamic Programming Table:")
 data.append([basicOps()])
 print(tabulate(data, headers=["# of times the basic operation"]))

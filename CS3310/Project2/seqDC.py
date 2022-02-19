@@ -3,8 +3,8 @@ from functools import partial
 from tabulate import tabulate
 
 counter = 0
-x = "CATS"
-y = "CAT"
+x = "1234"
+y = "1515"
 data = []
 
 def basicOps():
@@ -63,9 +63,9 @@ def alignment_score(x, y, alignment):
     alignment -- an alignment of x and y.
     """
     global counter
-    score_gap = -1
-    score_same = +1
-    score_different = -1
+    score_gap = 2
+    score_same = 0
+    score_different = 1
 
     score = 0
     for i, j in alignment:
@@ -80,19 +80,20 @@ def alignment_score(x, y, alignment):
     return score
 
 def align_bf(x, y):
-    """Align two sequences, maximizing the
+    """Align two sequences, minimizing the
     alignment score, using brute force.
 
     x, y -- sequences.
     """
-    return max(
+    return min(
         all_alignments(x, y),
         key=partial(alignment_score, x, y),
     )
-    
+
+print("Alignment of Divide and Conquer:")
 print_alignment(x, y, align_bf(x, y))
 print("Total Cost/Penality For Divide and Conquer: %s" %alignment_score(x, y, alignment=align_bf(x,y)))
-print("Number of Basic Operations For Divide and Conquer: %s" %basicOps())
+print("")
 print("Divide and Conquer Table:")
 data.append([basicOps()])
 print(tabulate(data, headers=["# of times the basic operation"]))
