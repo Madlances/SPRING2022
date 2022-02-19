@@ -19,25 +19,25 @@ boxr [];
 boxr [true, false];
 
 (* Problem 10 *)
+fun duplist L = foldr (fn (a, b) => a::a::b) [] L;
+duplist [1,2,3];
 
 (* Problem 14 *)
 fun maxpairs x = map (fn (a,b) => if a > b then a else b) x;
 maxpairs [(1,3), (4,2), (~3, ~4)];
 
 (* Problem 19 *)
+fun member (e, nil) = false
+  | member(e, x::xs) = if e = x then true else member(e, xs);
+member(1, [1,2]);
+member(2, [1,3,5]);
 
 (* Problem 22 *)
-fun evens [] = []
+fun evens nil = nil
   | evens (x::xs) =
       if x mod 2 = 0 then x::evens(xs)
       else evens(xs);
 evens [1,2,3,4];
-
-(* Chapter 10: 3, 4 *)
-
-(* Problem 3 *)
-
-(* Problem 4 *)
 
 (* Extra Problem *)
 (* B - Name two examples from C/C++ where a variable is “live” (in use) but not in scope (i.e.. not visible in some places in code). *)
