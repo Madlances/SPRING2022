@@ -7,7 +7,7 @@ package madsen.vendorclasses.stereo;
  * */
 public class Stereo {
     private int volume = 5;
-    private StereoMode mode;
+    private StereoMode mode = StereoMode.CD;
     private boolean powerState = false;
 
     public void on() {
