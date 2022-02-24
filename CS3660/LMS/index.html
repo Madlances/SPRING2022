@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
 
         <!-- my css -->
-        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="css/main.css" />
 
         <title>Smash Bros League</title>
         <link class="favicon" rel="icon" href="images/white_smash_ball.png" />
@@ -38,7 +38,7 @@
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-to navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img
                         src="images/Smash_Ball.png"
                         alt=""
@@ -95,18 +95,48 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="container-fluid">
-                    <aside class="homeAside text-white rounded">
-                        <p>
-                            Schedule:<br />
-                            8am - Coach Meeting 10am - The Pink Puffs vs Buffet's Bane<br />
-                            11am - Echoes vs Corrupted Visions<br />
-                            12am - Lunch @ Peach's Castle<br />
-                            3pm - Plant Gang vs It's a Mii, Mario!<br />
-                            4pm - Dinner @ SuperHappy Tree<br />
-                            6pm - Final Results
-                        </p>
-                    </aside>
-                    <div class="Home mt-4 p-5 bg-secondary text-white rounded">
+                    <div class="row">
+                        <div class="col col-lg-8 mt-4 p-5 bg-secondary text-white rounded Home">
+                            <h1>About us</h1>
+                            <p>
+                                Super Smash Bros League is a competive gameplay where teams can go against each other
+                                and try to win the Golden Cup.<br />
+                                To do this they will need to fight each other head on.<br />
+                            </p>
+
+                            <h2>Rules</h2>
+                            <ul>
+                                <li>Each team needs to to launch their opponents off the stage and out of bounds.</li>
+                                <li>
+                                    To knock out an opposing player, the player must knock that player outside the
+                                    stage's boundaries to the right or left.
+                                </li>
+                                <li>
+                                    When a player is pushed or hit off the stage, the player can attempt to "recover" by
+                                    jumping or use any other object they brought to grab on to the stage.
+                                </li>
+                                <li>
+                                    Additionally, some players vary in weight, with lighter palyers being easier to get
+                                    off the stage than heavy characters.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col col-lg-3 mt-4 p-5 bg-secondary text-white rounded Schedule">
+                            <aside>
+                                <p>
+                                    Schedule:<br />
+                                    8am - Coach Meeting 10am - The Pink Puffs vs Buffet's Bane<br />
+                                    11am - Echoes vs Corrupted Visions<br />
+                                    12am - Lunch @ Peach's Castle<br />
+                                    3pm - Plant Gang vs It's a Mii, Mario!<br />
+                                    4pm - Dinner @ SuperHappy Tree<br />
+                                    6pm - Final Results
+                                </p>
+                            </aside>
+                        </div>
+                    </div>
+                    <!-- <div class="Home mt-4 p-5 bg-secondary text-white rounded">
                         <h1>About us</h1>
                         <p>
                             Super Smash Bros League is a competive gameplay where teams can go against each other and
@@ -130,7 +160,7 @@
                                 the stage than heavy characters.
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <div class="row">
                         <div class="col-sm">
@@ -205,21 +235,11 @@
             </div>
             <div class="tab-pane fade" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab">
                 <div class="container-fluid">
-                    <aside class="teamAside text-white rounded">
-                        <p>
-                            Latest Results:<br />
-                            1. The Pink Puffs<br />
-                            2. Buffet's Bane<br />
-                            3. Echoes<br />
-                            4. Corrupted Visions<br />
-                            5. Plant Gang!<br />
-                            6. It's a Mii, Mario!<br />
-                            7. Ghost Hunters
-                        </p>
-                    </aside>
-                    <div class="Teams mt-4 p-5 bg-secondary text-white rounded">
-                        <h1>Teams</h1>
-                        <p>Current Teams Signed Up</p>
+                    <div class="row">
+                        <div class="col mt-4 p-5 bg-secondary text-white rounded Teams">
+                            <h1>Teams</h1>
+                            <p>Current Teams Signed Up</p>
+                        </div>
                     </div>
                     <div id="alert"></div>
                     <table class="table table-hover">
@@ -455,5 +475,5 @@
         </footer>
     </body>
     <!-- Only includes the alert atm -->
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
 </html>

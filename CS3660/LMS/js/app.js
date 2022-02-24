@@ -38,7 +38,7 @@ $(document).ready(function (ev) {
     });
 
     function alert(teamName) {
-        let alertHtml = `<div class="alert alert-success alert-dismissible fade show" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+        let alertHtml = `<div class="alert alert-secondary alert-dismissible fade show" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
                        Your Team ${teamName} has been deleted.
                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                    </div>`;

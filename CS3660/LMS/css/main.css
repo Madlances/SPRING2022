@@ -1,26 +1,12 @@
-.homeAside {
-    width: 30%;
-    padding-left: 10px;
-    margin-left: 10px;
-    float: right;
-    background-color: black;
-}
-
 body {
-    background-image: url("images/1200px-SSBU-Battlefield.png");
+    background-image: url("../images/1200px-SSBU-Battlefield.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: lightblue;
+    background-color: palegoldenrod;
     font-family: custom;
 }
 
-.table,
-.text-center,
-.navbar,
-img,
-.modal-header,
-.modal-body,
-.modal-footer {
+.table {
     background-color: lightblue;
 }
 
@@ -28,6 +14,14 @@ img,
 .nav-tabs .nav-item.show .nav-link {
     color: #ffffff;
     background-color: gray;
+}
+
+.nav,
+.nav-link,
+.Home,
+.Teams {
+    font-family: "Franklin Gothic Medium";
+    font-size: large;
 }
 
 .highlight1,
@@ -63,7 +57,8 @@ img,
 .Home,
 .Highlights,
 .table,
-footer {
+footer,
+.Schedule {
     opacity: 0.8;
 }
 
@@ -80,7 +75,37 @@ footer {
     opacity: 0.8;
 }
 
+.text-center {
+    background-color: palegoldenrod;
+}
+
+.navbar {
+    background-color: indianred;
+}
+
+tbody,
+.popover {
+    font-family: Haettenschweiler;
+    font-style: bold;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: white;
+}
+
+.Schedule,
+.Home,
+.Teams {
+    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 @font-face {
     font-family: custom;
-    src: url(super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
+    src: url(../super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
 }
