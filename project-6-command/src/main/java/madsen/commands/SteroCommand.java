@@ -28,7 +28,6 @@ public class SteroCommand implements Command{
     public void on() {
         stereo.on();
         stereo.setVolume(volume);
-        stereo.setRadio();
         if (stereo.getMode() == StereoMode.RADIO) {
             stereo.setDvd();
         }
