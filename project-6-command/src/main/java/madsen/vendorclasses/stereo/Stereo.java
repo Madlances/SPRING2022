@@ -22,7 +22,7 @@ public class Stereo {
 
     private void printPowerState() {
         String stateString = powerState ? "on" : "off";
-        System.out.printf("CeilingLight is %s\n", stateString);
+        System.out.printf("Stereo is %s\n", stateString);
     }
 
     public boolean getPowerState() {

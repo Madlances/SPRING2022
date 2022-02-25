@@ -43,7 +43,7 @@ public class CeilingFan {
 
     private void printPowerState() {
         String stateString = powerState ? "on" : "off";
-        System.out.printf("CeilingLight is %s\n", stateString);
+        System.out.printf("Ceiling Fan is %s\n", stateString);
     }
 
     public boolean isOn() {

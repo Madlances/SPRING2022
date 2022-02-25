@@ -22,6 +22,6 @@ public class ApplianceControl {
 
     private void printPowerState() {
         String stateString = powerState ? "on" : "off";
-        System.out.printf("CeilingLight is %s\n", stateString);
+        System.out.printf("Appliance is %s\n", stateString);
     }
 }

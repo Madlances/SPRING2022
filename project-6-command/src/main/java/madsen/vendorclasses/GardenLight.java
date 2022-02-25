@@ -45,6 +45,6 @@ public class GardenLight {
 
     private void printPowerState() {
         String stateString = powerState ? "on" : "off";
-        System.out.printf("CeilingLight is %s\n", stateString);
+        System.out.printf("GardenLight is %s\n", stateString);
     }
 }

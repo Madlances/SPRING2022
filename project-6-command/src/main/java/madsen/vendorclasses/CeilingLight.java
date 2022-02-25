@@ -34,6 +34,6 @@ public class CeilingLight {
 
     private void printPowerState() {
         String stateString = powerState ? "on" : "off";
-        System.out.printf("CeilingLight is %s\n", stateString);
+        System.out.printf("Ceiling Light is %s\n", stateString);
     }
 }
