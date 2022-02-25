@@ -3,8 +3,8 @@ from functools import partial
 from tabulate import tabulate
 
 counter = 0
-x = "1234"
-y = "1515"
+x = "12341234"
+y = "12345123"
 data = []
 
 def basicOps():

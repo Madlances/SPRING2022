@@ -28,17 +28,22 @@ public class SteroCommand implements Command{
     public void on() {
         stereo.on();
         stereo.setVolume(volume);
-        if (stereo.getMode() == StereoMode.RADIO) {
+        StereoMode mode = stereo.getMode();
+        if (mode == StereoMode.CD) {
+            mode = StereoMode.RADIO;
+            stereo.setRadio();
+        }
+        
+        if (mode == StereoMode.RADIO) {
+            mode = StereoMode.DVD;
             stereo.setDvd();
         }
 
-        if (stereo.getMode() == StereoMode.DVD) {
+        if (mode == StereoMode.DVD) {
+            mode = StereoMode.CD;
             stereo.setCd();
         }
 
-        if (stereo.getMode() == StereoMode.CD) {
-            stereo.setRadio();
-        }
     }
 
     /**

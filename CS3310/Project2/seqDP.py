@@ -4,8 +4,8 @@ from collections import deque
 from tabulate import tabulate
 
 counter = 0
-x = "1234"
-y = "1515"
+x = "111122223344"
+y = "111155553344"
 data = []
 
 def basicOps():
