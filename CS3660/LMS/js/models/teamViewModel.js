@@ -1,9 +1,11 @@
-var teamViewModal = {
+var teamViewModel = {
     entity: "teams",
     wrapperContainerId: "teamPageWrapper",
     wrapperTemplateUrl: "js/views/partials/listPageWrapper.ejs",
     listContainerId: "tableContainer",
     listTemplateUrl: "js/views/partials/listPageView.ejs",
+    modelContainerId: "myModal",
+    alertContainerId: "alertContainer",
     data: mockTeamData,
     list: {
         options: {
@@ -15,31 +17,37 @@ var teamViewModal = {
             fiterStr: "",
         },
 
-        listTitle: "Team List",
-        listButtonId: "teamButton",
+        listTitle: "Teams",
 
-        id: "",
-        tableClasses: "",
-        thClasses: "",
+        id: "my-list",
+        tableClasses: "table table-dark table-hover mt-2",
+        thClasses: "bg-black bg-gradient",
+
+        logoCol: "teamPhoto",
+        nameCol: "name",
         columns: [
             {
                 label: "Team Name",
                 name: "name",
+                popver: "true"
             },
 
             {
                 label: "Coach Name",
                 name: "coachName",
+                popover: "true"
             },
 
             {
                 label: "Coach Phone",
                 name: "coachPhone",
+                popover: "true"
             },
 
             {
                 label: "# of Players",
                 name: "numPlayers",
+                popover: "true"
             }
         ]
     }

@@ -1,0 +1,24 @@
+<table id='<%=view.list.id%>' class="<%view.list.tableClasses%>">
+    <tr class="trow">
+        <% view.columns.forEach( function(col, key){ %>
+            <th class="sortable thead <%=view.list.thClasses%>" data-name="<%=col.name%>">
+                <%=col.label%>
+                <i id="<%=col.name%>-asc" class="fa fa-arrow-up" aria-hidden="true" style="display:none"></i>
+                <i id="<%=col.name%>-desc" class="fa fa-arrow-down" aria-hidden="true" style="display:none"></i>
+            </th>
+            <% }); %>
+            <th>Actions</th>
+    </tr>
+
+    <% data.forEach(function(de) { %>
+        <tr data-id="<%=de.id%>" data-bs-toggle="popover">
+            <% view.columns.forEach(function(col) { %>
+                <td><%=de[col.name]%></td>
+            <% }); %>
+            <td>
+                <span class="fas fa-edit"></span>
+                <span class="fas fa-trash" data-bs-toggle="modal" data-bs-target="#myModal"></span>
+            </td>
+        </tr>
+    <% }); %> 
+</table>

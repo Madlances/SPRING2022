@@ -136,31 +136,6 @@
                             </aside>
                         </div>
                     </div>
-                    <!-- <div class="Home mt-4 p-5 bg-secondary text-white rounded">
-                        <h1>About us</h1>
-                        <p>
-                            Super Smash Bros League is a competive gameplay where teams can go against each other and
-                            try to win the Golden Cup.<br />
-                            To do this they will need to fight each other head on.<br />
-                        </p>
-
-                        <h2>Rules</h2>
-                        <ul>
-                            <li>Each team needs to to launch their opponents off the stage and out of bounds.</li>
-                            <li>
-                                To knock out an opposing player, the player must knock that player outside the stage's
-                                boundaries to the right or left.
-                            </li>
-                            <li>
-                                When a player is pushed or hit off the stage, the player can attempt to "recover" by
-                                jumping or use any other object they brought to grab on to the stage.
-                            </li>
-                            <li>
-                                Additionally, some players vary in weight, with lighter palyers being easier to get off
-                                the stage than heavy characters.
-                            </li>
-                        </ul>
-                    </div> -->
 
                     <div class="row">
                         <div class="col-sm">
@@ -241,8 +216,19 @@
                             <p>Current Teams Signed Up</p>
                         </div>
                     </div>
-                    <div id="alert"></div>
-                    <table class="table table-hover">
+
+                    <div class="col-sm-8">
+                
+                        <div class="shadow-lg rounded-3 p-3 bg-black bg-opacity-75 bg-gradient " id="teamPageWrapper">
+                          <!--render team page here-->
+                        </div>
+                          <!--Modal-->
+                        
+                       
+                        
+                      </div>
+                    <!-- <div id="alert"></div> -->
+                    <!-- <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Team Name</th>
@@ -399,9 +385,9 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                     <!-- Confirmation Modal -->
-                    <div class="modal fade" id="confirmationModal">
+                    <!-- <div class="modal fade" id="confirmationModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -417,7 +403,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -473,7 +459,23 @@
             </div>
             <!-- Copyright -->
         </footer>
+        <script src="https://unpkg.com/ejs@3.1.3/ejs.min.js"></script>
+        <script src="js/models/mockTeamData.js"></script>
+        <script src="js/models/teamViewModel.js"></script>
+        <script src="js/models/appViewModel.js"></script>
+        <script src="js/models/localStorageService.js"></script>
+
+        <script src="js/views/listPageView.js"></script>
+        <script src="js/controllers/appController.js"></script>
+        <script>
+            $(document).ready(function() {
+                (async () => {
+                    app = new AppController(appViewModel);
+                    await app.render();
+                }) ();
+            })
+        </script>
     </body>
     <!-- Only includes the alert atm -->
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
 </html>

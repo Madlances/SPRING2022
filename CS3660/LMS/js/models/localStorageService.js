@@ -1,13 +1,25 @@
+
+/* LocalStorageService*/
+/* You will integrate your LocalStorageService from the first assignment, so IMPORTANT you finish Framework1 before 
+completing this assignment! */
+/* Review this file as I have made several changes. 
+
+1. The 'list' getter function does any sorting or filtering based on the current SortCol, SortDir, and FilterStr 
+2. Getters and Setters added for model.options.filterStr
+3. Setter for 'options' object added. Default 'options' (sortCol,sortDir) can be passed into constructor-code given
+4. SortCol and SortDir getters and setters should use 'this.model.options' instead of 'this.model.app'
+5. initModel method added-given*/
+
 class LocalStorageService {
     "use strict"
     constructor(data, key, options={}) {
        
         this.key = key;
+       
         this.initModel(data, options);
     }
 
     //Getters and Setters
-    
     get sortCol() {
         return this.model.options.sortCol;
     }
@@ -47,9 +59,6 @@ class LocalStorageService {
         if (data!=null){
             this.model.data=data;
         }
-         //apply default sort
-        this.sort(this.sortCol, this.sortDir, false);
-
         this.origModel = this.cloneObject(this.model);
        
         this.retrieve();
@@ -67,11 +76,11 @@ class LocalStorageService {
         return this.model.data;
     }
 
-     create(obj) {
+     async create(obj) {
         this.model.data.push(obj);
         this.store();
     }
-     read(getId) {
+     async read(getId) {
         let data = this.model.data.find(element => element.id == getId);
 
         if (data === undefined)
@@ -79,7 +88,7 @@ class LocalStorageService {
         else
             return data;
     }
-     update(obj) {
+    async update(obj) {
         let index = this.getItemIndex(obj.id);
         if (index != -1) {
             this.model.data[index] = obj;
@@ -87,7 +96,7 @@ class LocalStorageService {
         }
     }
 
-     delete(removeId) {
+     async delete(removeId) {
         let index = this.getItemIndex(removeId);
         this.model.data.splice(index, 1)
 
@@ -95,11 +104,11 @@ class LocalStorageService {
     }
 
     //LocalStorage Functions
-     reset() {
+     async reset() {
         this.model = this.cloneObject(this.origModel);
         this.clear();
     }
-     clear() {
+     async clear() {
         localStorage.removeItem(this.key);
         localStorage.clear();
     }
