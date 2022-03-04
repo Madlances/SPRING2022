@@ -3,11 +3,11 @@
         <% view.columns.forEach( function(col, key){ %>
             <th class="sortable thead <%=view.list.thClasses%>" data-name="<%=col.name%>">
                 <%=col.label%>
-                <i id="<%=col.name%>-asc" class="fa fa-arrow-up" aria-hidden="true" style="display:none"></i>
-                <i id="<%=col.name%>-desc" class="fa fa-arrow-down" aria-hidden="true" style="display:none"></i>
+                <i id="<%=col.name%>-asc" class="bi bi-arrow-up" aria-hidden="true" style="display:none"></i>
+                <i id="<%=col.name%>-desc" class="bi bi-arrow-down" aria-hidden="true" style="display:none"></i>
             </th>
             <% }); %>
-            <th>Actions</th>
+            <th class="thead <%=view.list.thClasses%>">Actions</th>
     </tr>
 
     <% data.forEach(function(de) { %>
@@ -16,8 +16,8 @@
                 <td><%=de[col.name]%></td>
             <% }); %>
             <td>
-                <span class="fas fa-edit"></span>
-                <span class="fas fa-trash" data-bs-toggle="modal" data-bs-target="#myModal"></span>
+                <span class="bi bi-pencil-square"></span>
+                <span class="bi bi-trash2-fill" data-bs-toggle="modal" data-bs-target="#myModal"></span>
             </td>
         </tr>
     <% }); %> 

@@ -60,9 +60,9 @@ class ListPageView {
     async renderWrapper() {
         this.$wrapperContainer.empty();
         if (!this.wrapperTemplateHtml.length > 0) {
-            this.wrapperTemplateHtml = await this.getFileContents(this.wrapperTemplateHtml);
+            this.wrapperTemplateHtml = await this.getFileContents(this.wrapperTemplateUrl);
         }
-        this.$wrapperContainer.html(ejs.render(this.wrapperTemplateHtml), {view: this.viewModal});
+        this.$wrapperContainer.html(ejs.render(this.wrapperTemplateHtml, {view: this.viewModel}));
         await this.bindWrapperEvents();
     }
 

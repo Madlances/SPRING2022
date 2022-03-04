@@ -3,7 +3,7 @@ var teamViewModel = {
     wrapperContainerId: "teamPageWrapper",
     wrapperTemplateUrl: "js/views/partials/listPageWrapper.ejs",
     listContainerId: "tableContainer",
-    listTemplateUrl: "js/views/partials/listPageView.ejs",
+    listTemplateUrl: "js/views/partials/listView.ejs",
     modelContainerId: "myModal",
     alertContainerId: "alertContainer",
     data: mockTeamData,
