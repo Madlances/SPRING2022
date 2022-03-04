@@ -1,5 +1,5 @@
 <table id='<%=view.list.id%>' class="<%view.list.tableClasses%>">
-    <tr class="trow">
+    <tr class="trow w-100">
         <% view.columns.forEach( function(col, key){ %>
             <th class="sortable thead <%=view.list.thClasses%>" data-name="<%=col.name%>">
                 <%=col.label%>

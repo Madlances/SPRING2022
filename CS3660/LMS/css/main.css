@@ -105,6 +105,10 @@ tbody,
     padding-bottom: 20px;
 }
 
+.modal {
+    color: black;
+}
+
 @font-face {
     font-family: custom;
     src: url(../super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
