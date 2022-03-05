@@ -1,5 +1,4 @@
 /* App View Model-contains application level meta data */
-var appViewModel= {
-    
+var appViewModel = {
     viewModel: teamViewModel
 }

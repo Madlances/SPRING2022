@@ -172,22 +172,20 @@ class ListPageView {
     }
 
     initPopver() {
-        let that=this;
+        let that = this;
       $('[data-bs-toggle="popover"]').popover({
         html: true,
         trigger : 'hover',
         title : function(){
-            var index = $(this).attr("data-id");      //get data-id from current TR
-            let item= that.data[that.storage.getItemIndex(index)];    //grab the current object from your data
-            //return image using the image path in the logoCol (from view model) attribute on the data, output name using nameCol
+            var index = $(this).attr("data-id");
+            let item = that.data[that.storage.getItemIndex(index)];
             return `<img class="img-fluid rounded-circle" src="${item[that.view.list.logoCol]}" width="40" height="40">  ${item[that.view.list.nameCol]} `;
         },
         content : function() {
           var index = $(this).attr("data-id");
-          let item= that.data[that.storage.getItemIndex(index)];
-          let htmlContent="";
-          //using the 'columns' array in the view model, output the column data where popover=true
-          that.columns.forEach((col, idx)=>{
+          let item = that.data[that.storage.getItemIndex(index)];
+          let htmlContent = "";
+          that.columns.forEach((col, idx) => {
             if (col.popover)
               htmlContent+=`<p>${col.label}: ${item[col.name]}</p>`;
           })
