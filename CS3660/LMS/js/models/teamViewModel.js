@@ -4,7 +4,7 @@ var teamViewModel = {
     wrapperTemplateUrl: "js/views/partials/listPageWrapper.ejs",
     listContainerId: "tableContainer",
     listTemplateUrl: "js/views/partials/listView.ejs",
-    modelContainerId: "myModal",
+    modalContainerId: "myModal",
     alertContainerId: "alertContainer",
     data: mockTeamData,
     list: {
@@ -20,8 +20,8 @@ var teamViewModel = {
         listTitle: "Teams",
 
         id: "my-list",
-        tableClasses: "table table-dark table-hover mt-2",
-        thClasses: "bg-black bg-gradient",
+        tableClasses: "table table-hover mt-2",
+        thClasses: "w-25 p-3 bg-black bg-gradient text-white",
 
         logoCol: "teamPhoto",
         nameCol: "name",

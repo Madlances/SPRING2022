@@ -2,12 +2,7 @@ body {
     background-image: url("../images/1200px-SSBU-Battlefield.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: palegoldenrod;
     font-family: custom;
-}
-
-.table {
-    background-color: lightblue;
 }
 
 .nav-tabs .nav-link.active,
@@ -18,8 +13,7 @@ body {
 
 .nav,
 .nav-link,
-.Home,
-.Teams {
+.Home {
     font-family: "Franklin Gothic Medium";
     font-size: large;
 }
@@ -32,7 +26,7 @@ body {
 
 .popover {
     background-color: lightblue;
-    font-family: custom;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .imgPopover {
@@ -46,19 +40,15 @@ body {
 }
 
 .alert {
-    width: 500px;
+    width: 600px;
     height: 50px;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.Teams,
 .Home,
-.Highlights,
-.table,
-footer,
-.Schedule {
+footer {
     opacity: 0.8;
 }
 
@@ -75,7 +65,7 @@ footer,
     opacity: 0.8;
 }
 
-.text-center {
+.footer {
     background-color: palegoldenrod;
 }
 
@@ -83,10 +73,8 @@ footer,
     background-color: indianred;
 }
 
-tbody,
-.popover {
-    font-family: Haettenschweiler;
-    font-style: bold;
+.Teams {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .modal-header,
@@ -95,18 +83,12 @@ tbody,
     background-color: white;
 }
 
-.Schedule,
-.Home,
-.Teams {
-    padding: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .modal {
     color: black;
+}
+
+th, tbody, #searchInput, #clearSearch, #resetView {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 @font-face {

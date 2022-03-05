@@ -79,17 +79,20 @@ class ListPageView {
 
     bindListEvents(data) {
         let that = this;
+
         for (let col of this.columns) {
-            $(`th[data-name='${col.name}]`).off("click").on("click", (e) => {
+            $(`th[data-name='${col.name}']`).off("click").on("click", (e) => {
                 const dataName = $(e.currentTarget).attr("data-name");
                 let curDirection = this.storage.sortDir;
                 $(`#${dataName}-${curDirection}`).hide();
 
                 if (that.storage.sortCol === dataName) {
-                    that.storage.sortDir = (curDirection == "asc"?"desc":"asc");
-                } else {
+                    that.storage.sortDir = (curDirection == "asc" ? "desc" : "asc");
+                }
+                else {
                     that.storage.sortDir = "asc";
                 }
+
                 $(`#${dataName}-${this.storage.sortDir}`).show();
                 that.storage.sortCol = dataName;
                 that.renderList();
@@ -100,7 +103,7 @@ class ListPageView {
 
     async bindWrapperEvents() {
         let that = this;
-        let $myModal = this.$modal;
+        let $myModal = that.$modal;
 
         $myModal.on("show.bs.modal", function(ev){
             let button = ev.relatedTarget;
@@ -111,7 +114,7 @@ class ListPageView {
 
             var $modalTitle = $('.modal-title');
 
-            $modalTitle.text(`Delte Team ${dataName}`);
+            $modalTitle.text(`Delete Team ${dataName}`);
             $myModal.attr("data-id", rowItemId);
             $myModal.attr("data-name", dataName);
         });
@@ -119,8 +122,7 @@ class ListPageView {
         $("#yesButton").click((e) => {
             let itemName = $myModal.attr("data-name");
             let itemId = $myModal.attr("data-id");
-
-            this.addAlert(this.view.entitySingle, itemName);
+            this.addAlert(itemName);
 
             this.deleteListItem(itemId).then((out) => {
                 this.renderList();
@@ -145,9 +147,9 @@ class ListPageView {
         });
     }
 
-    addAlert(itemType, itemName) {
+    addAlert(itemName) {
         let alertHtml = `<div class="alert alert-secondary alert-dismissible fade show" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
-                       Your Team ${itemType}: ${itemName} has been deleted.
+                       Your Team ${itemName} has been deleted.
                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                    </div>`;
         this.$alertContainer.html(alertHtml);
