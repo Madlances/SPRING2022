@@ -1,16 +1,45 @@
 package madsen;
 
-public interface Shape {
+/**
+ * This is our Shape that is abstract, so any class that extends off of this class will
+ * have to have the functions display, fill, and undisplay. Only the Circle class will
+ * use setLocation, getLocation, and setColor
+ */
+public abstract class Shape {
     
-    public void setLocation();
+    /**
+     * This function will set the location of the shape (for now we are just printing out a statement to indicate that)
+     */
+    public void setLocation() {
+        System.out.println("You have set the location of this Shape");
+    }
 
-    public void getLocation();
+    /**
+     * This function will get the location of the shape (for now we are just printing out a statement to indicate that)
+     */
+    public void getLocation() {
+        System.out.println("You have the location of this Shape");
+    }
 
-    public void display();
+    /**
+     * This function is our display function that will have the other classes implement
+     */
+    public abstract void display();
 
-    public void fill();
+    /**
+     * This is our fill function that will have the other classes implement
+     */
+    public abstract void fill();
 
-    public void setColor();
+    /**
+     * This function will set the color of the shape (for now we are just printing out a statement to indicate that)
+     */
+    public void setColor() {
+        System.out.println("You have set the color of this Shape");
+    };
 
-    public void undisplay();
+    /**
+     * This our undisplay function that will have the other classes implement
+     */
+    public abstract void undisplay();
 }

@@ -1,98 +1,61 @@
 package madsen;
+/**
+ * @author Kassandra Madsen
+ * CS 3450 Section X01
+ * Project 7 - Adapter pattern
+ */
 
 import java.util.Scanner;
 
+/**
+ * This is our main class that will display the shapes from the shape class
+ */
 public class TestDriver 
 {
+    /**
+     * This will output the shape the user inputs
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Point point = new Point();
-        Line line = new Line();
-        Rectangle rectangle = new Rectangle();
-        XXCircleAdapter xxCircleAdapter = new XXCircleAdapter();
+
+        Shape shape = null;
+
         System.out.println("Would you like the Point, Line, Rectangle, or Circle shape?");
-        String shape = scanner.nextLine().toLowerCase();
-        while (true) {
-            System.out.println("Next, would you like to set location, get location, display, fill, set color, or undisplay the shape? Type quit when you are done");
+        while (shape == null) {
             String nextLine = scanner.nextLine().toLowerCase();
-            if (shape.equals("point") && nextLine.equals("set location")) {
-                System.out.println("I'm sorry that is not an option for the shape Point, please choose Circle if you would like to set a location");
+            if (nextLine.equals("point")) {
+                shape = new Point();
+            } else if (nextLine.equals("line")) {
+                shape = new Line();
+            } else if (nextLine.equals("rectangle")) {
+                shape = new Rectangle();
+            } else if (nextLine.equals("circle")) {
+                shape = new XXCircleAdapter();
+            } else {
+                System.out.println("I'm sorry but that is not a valid shape, please choose Point, Line, Rectangle, or Circle");
             }
-            else if (shape.equals("line") && nextLine.equals("set location")) {
-                System.out.println("I'm sorry that is not an option for the shape Line, please choose Circle if you would like to set a location");
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("set location")) {
-                System.out.println("I'm sorry that is not an option for the shape Rectangle, please choose Circle if you would like to set a location");
-            }
-            else if (shape.equals("circle") && nextLine.equals("set location")) {
-                xxCircleAdapter.setLocation();
-            }
-            else if (shape.equals("point") && nextLine.equals("get location")) {
-                System.out.println("I'm sorry that is not an option for the shape Point, please choose Circle if you would like to get a location");
-            }
-            else if (shape.equals("line") && nextLine.equals("get location")) {
-                System.out.println("I'm sorry that is not an option for the shape Line, please choose Circle if you would like to get a location");
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("get location")) {
-                System.out.println("I'm sorry that is not an option for the shape Rectangle, please choose Circle if you would like to get a location");
-            }
-            else if (shape.equals("circle") && nextLine.equals("get location")) {
-                xxCircleAdapter.getLocation();
-            }
-            else if (shape.equals("point") && nextLine.equals("display")) {
-                point.display();
-            }
-            else if (shape.equals("line") && nextLine.equals("display")) {
-                line.display();
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("display")) {
-                rectangle.display();
-            }
-            else if (shape.equals("circle") && nextLine.equals("display")) {
-                xxCircleAdapter.display();
-            }
-            else if (shape.equals("point") && nextLine.equals("fill")) {
-                point.fill();
-            }
-            else if (shape.equals("line") && nextLine.equals("fill")) {
-                line.fill();
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("fill")) {
-                rectangle.fill();
-            }
-            else if (shape.equals("circle") && nextLine.equals("fill")) {
-                xxCircleAdapter.fill();
-            }
-            else if (shape.equals("point") && nextLine.equals("set color")) {
-                System.out.println("I'm sorry that is not an option for the shape Point, please choose Circle if you would like to set a color");
-            }
-            else if (shape.equals("line") && nextLine.equals("set color")) {
-                System.out.println("I'm sorry that is not an option for the shape Line, please choose Circle if you would like to set a color");
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("set color")) {
-                System.out.println("I'm sorry that is not an option for the shape Rectangle, please choose Circle if you would like to set a color");
-            }
-            else if (shape.equals("circle") && nextLine.equals("set color")) {
-                xxCircleAdapter.setColor();
-            }
-            else if (shape.equals("point") && nextLine.equals("undisplay")) {
-                point.undisplay();
-            }
-            else if (shape.equals("line") && nextLine.equals("undisplay")) {
-                line.undisplay();
-            }
-            else if (shape.equals("rectangle") && nextLine.equals("undisplay")) {
-                rectangle.undisplay();
-            }
-            else if (shape.equals("circle") && nextLine.equals("undisplay")) {
-                xxCircleAdapter.undisplay();
-            }
-            else if (nextLine.equals("quit")) {
+        }
+
+        while (true) {
+            System.out.println("Would you like to set location, get location, display, fill, set color, or undisplay the shape? Type quit when you are done");
+            String nextLine = scanner.nextLine().toLowerCase();
+            if (nextLine.equals("set location")) {
+                shape.setLocation();
+            } else if (nextLine.equals("get location")) {
+                shape.getLocation();
+            } else if (nextLine.equals("display")) {
+                shape.display();
+            } else if (nextLine.equals("undisplay")) {
+                shape.undisplay();
+            } else if (nextLine.equals("fill")) {
+                shape.fill();
+            } else if (nextLine.equals("set color")) {
+                shape.setColor();
+            } else if (nextLine.equals("quit")) {
                 break;
-            }
-            else {
-                System.out.println("\nI'm sorry but that is not an option. Please choose something else\n");
-                System.out.println("Would you like to set location, get location, display, fill, set color, or undisplay the shape? Type quit when you are done");
+            } else {
+                System.out.print("\nI'm sorry but that is not an option.\n");
             }
         }
         scanner.close();
