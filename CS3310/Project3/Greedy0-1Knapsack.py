@@ -1,60 +1,39 @@
-# Python3 program to solve fractional
-# Knapsack Problem
+import timeit
 
+class Solution:
+   def solve(self, weights, values, capacity):
+      res = 0
+      for pair in sorted(zip(weights, values), key=lambda x: - x[1]/x[0]):
+         if not bool(capacity):
+            break
+         if pair[0] > capacity:
+            res += int(pair[1] / (pair[0] / capacity))
+            capacity = 0
+         elif pair[0] <= capacity:
+            res += pair[1]
+            capacity -= pair[0]
+      return int(res)
 
-class ItemValue:
+start = timeit.default_timer()
+ob = Solution()
+weights = [6, 7, 3, 5]
+values = [110, 120, 2, 1]
+capacity = 10
 
-	"""Item Value DataClass"""
+optimalSolution = ob.solve(weights, values, capacity)
+end = timeit.default_timer();
 
-	def __init__(self, wt, val, ind):
-		self.wt = wt
-		self.val = val
-		self.ind = ind
-		self.cost = val // wt
+print("Running Time for Greedy Knapsack (larger size): %f ms" %(1000 * (end - start)))
+print("Optimal solution (larger size): ", optimalSolution)
 
-	def __lt__(self, other):
-		return self.cost < other.cost
+start = timeit.default_timer()
+ob = Solution()
+weights = [6, 7, 3]
+values = [110, 120, 2]
+capacity = 10
 
-# Greedy Approach
+optSolution = ob.solve(weights, values, capacity)
+end = timeit.default_timer();
 
-
-class FractionalKnapSack:
-
-	"""Time Complexity O(n log n)"""
-	@staticmethod
-	def getMaxValue(wt, val, capacity):
-		"""function to get maximum value """
-		iVal = []
-		for i in range(len(wt)):
-			iVal.append(ItemValue(wt[i], val[i], i))
-
-		# sorting items by value
-		iVal.sort(reverse=True)
-
-		totalValue = 0
-		for i in iVal:
-			curWt = int(i.wt)
-			curVal = int(i.val)
-			if capacity - curWt >= 0:
-				capacity -= curWt
-				totalValue += curVal
-			else:
-				fraction = capacity / curWt
-				totalValue += curVal * fraction
-				capacity = int(capacity - (curWt * fraction))
-				break
-		return totalValue
-
-
-# Driver Code
-if __name__ == "__main__":
-	wt = [10, 40, 20, 30]
-	val = [60, 40, 100, 120]
-	capacity = 50
-
-	# Function call
-	maxValue = FractionalKnapSack.getMaxValue(wt, val, capacity)
-	print("Maximum value in Knapsack =", maxValue)
-
-# This code is contributed by vibhu4agarwal
-
+print("Running Time for Greedy Knapsack (smaller size): %f ms" %(1000 * (end - start)))
+print("Optimal solution (smaller size): ", optSolution)

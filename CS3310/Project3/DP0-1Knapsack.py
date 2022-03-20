@@ -1,5 +1,10 @@
 # we can further improve the above Knapsack function's space
 # complexity
+
+import timeit
+
+from numpy import number
+
 def knapSack(W, wt, val, n):
 
 	K = [[0 for x in range(W+1)] for y in range(2)]
@@ -27,12 +32,24 @@ def knapSack(W, wt, val, n):
 # Driver Code
 if __name__ == "__main__":
 
+	start = timeit.default_timer()
+	val = [60, 100, 120, 20]
+	wt = [10, 20, 30, 1]
+	W = 50
+	n = len(val)
+
+	solution = knapSack(W, wt, val, n)
+	end = timeit.default_timer();
+	print("Running Time for DP Knapsack (larger size): %f ms" %(1000 * (end - start)))
+	print("Solution for (larger size)", solution)
+
+	start = timeit.default_timer()
 	val = [60, 100, 120]
 	wt = [10, 20, 30]
 	W = 50
 	n = len(val)
 
-	print(knapSack(W, wt, val, n))
-
-	# This code is contributed by ukasp.
-
+	smallSolution = knapSack(W, wt, val, n)
+	end = timeit.default_timer();
+	print("Running Time for DP Knapsack (smaller size): %f ms" %(1000 * (end - start)))
+	print("Solution for (smaller size)", smallSolution)

@@ -1,10 +1,4 @@
-# A naive recursive implementation
-# of 0-1 Knapsack Problem
-
-# Returns the maximum value that
-# can be put in a knapsack of
-# capacity W
-
+import timeit
 
 def knapSack(W, wt, val, n):
 
@@ -32,11 +26,22 @@ def knapSack(W, wt, val, n):
 
 
 #Driver Code
+start = timeit.default_timer()
+val = [60, 100, 120, 150]
+wt = [10, 20, 30, 40]
+W = 50
+n = len(val)
+solution = knapSack(W, wt, val, n)
+end = timeit.default_timer();
+print("Running Time for Recursive Knapsack (longer size): %f ms" %(1000 * (end - start)))
+print("Solution for (larger size)", solution)
+
+start = timeit.default_timer()
 val = [60, 100, 120]
 wt = [10, 20, 30]
 W = 50
 n = len(val)
-print(knapSack(W, wt, val, n))
-
-# This code is contributed by Nikhil Kumar Singh
-
+smallSolution = knapSack(W, wt, val, n)
+end = timeit.default_timer();
+print("Running Time for Recursive Knapsack (smaller size): %f ms" %(1000 * (end - start)))
+print("Solution for (smaller size)", smallSolution)
