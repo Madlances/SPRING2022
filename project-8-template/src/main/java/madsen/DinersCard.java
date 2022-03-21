@@ -2,6 +2,12 @@ package madsen;
 
 public class DinersCard extends CreditCard{
 
+    public DinersCard(CustDiner customer) {
+        cardNum = customer.number;
+        expMM = customer.month;
+        expYY = customer.year;
+    }
+
     @Override
     public boolean isNumOfDigitsValid() {
         return cardNum.length() == 14;
