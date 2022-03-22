@@ -1,13 +1,21 @@
 package madsen;
 
 /**
- * Hello world!
- *
+ * @author Kassandra Madsen
+ * CS 3450 section X01
+ * Project 8 - Template Pattern
  */
 public class App 
 {
+    /**
+     * This is our main class that will see if a credit card is valid or invalid
+     * @param args
+     */
     public static void main( String[] args )
     {
+        /**
+         * From original code
+         */
         System.out.println("\nDiner Card Info:");
         CustDiner custDiner = new CustDiner(); // customer information
         DinersCard myDiner =  new DinersCard(custDiner);

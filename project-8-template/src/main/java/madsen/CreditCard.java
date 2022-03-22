@@ -3,19 +3,20 @@ package madsen;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This is our main CreditCard class that is an abstract class that has all the functions that
+ * are the same throughout the original code, as well as have a couple of functions that will be
+ * overwritten by the other subclasses.
+ * Note: the classes without abstract in front are from the original code
+ */
 public abstract class CreditCard {
     protected String cardNum;
     protected int expMM, expYY;
-    // String number = "";
-    // int month = 0;
-    // int year = 0;
 
-    // public CreditCard(CreditCard creditCard) {
-    //     cardNum = creditCard.number;
-    //     expMM = creditCard.month;
-    //     expYY = creditCard.year;
-    // }
-
+    /**
+     * This function is very important to the template pattern, and this is where we 
+     * call all the functions we need
+     */
     final void card() {
         isExpDtValid();
         hasValidChars();
@@ -26,6 +27,7 @@ public abstract class CreditCard {
         isValid();
     }
 
+    // Check for valid date
     final boolean isExpDtValid() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
@@ -35,6 +37,7 @@ public abstract class CreditCard {
         return (!result);
     }
 
+    // Check for valid chars
     final boolean hasValidChars() {
         String validChars = "0123456789";
         boolean result = true;
@@ -47,6 +50,7 @@ public abstract class CreditCard {
         return result;
     }
 
+    // Calc checksum
     final boolean isValidCheckSum() {
         boolean result = true;
         int sum = 0;
@@ -69,10 +73,17 @@ public abstract class CreditCard {
         return result;
     }
 
+    //check number of digits
     abstract boolean isNumOfDigitsValid();
 
+    //check prefix
     abstract boolean isValidPrefix();
 
+    /*
+      Make necessary card API calls to
+      perform other checks.
+      (set return to true if card is to be valid
+    */
     final boolean isAccountInGoodStand() {
         return true;
     }
