@@ -41,8 +41,11 @@ impl Shape {
  */
 
 fn f2n(f: fn(i32)->i32, n: u32, x: i32)-> i32 {
-    f(x.pow(n) * x)
-    
+    if n == 0 {
+        x
+    } else {
+        f2n(f, n-1, f(x))
+    }
 }
 
 /**
