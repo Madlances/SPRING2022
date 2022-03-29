@@ -1,0 +1,12 @@
+top:
+   file1
+   middle:
+      file2
+      file3
+      bottom:
+         file4
+         file5
+      file6
+   file7
+   another:
+      file8
