@@ -176,6 +176,7 @@ class ListPageView {
       $('[data-bs-toggle="popover"]').popover({
         html: true,
         trigger : 'hover',
+        delay: { show: 200 },
         title : function(){
             var index = $(this).attr("data-id");
             let item = that.data[that.storage.getItemIndex(index)];

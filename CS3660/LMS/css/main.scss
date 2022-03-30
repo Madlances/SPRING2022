@@ -1,0 +1,88 @@
+@import "mixins";
+@import "variables";
+
+body {
+    background-image: url("../images/1200px-SSBU-Battlefield.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: custom;
+}
+
+.nav-tabs {
+    .nav-link.active {
+        @include navbar;
+    }
+    .nav-item.show {
+        .nav-link {
+            @include navbar;
+        }
+
+    }
+}
+
+.nav,
+.nav-link,
+.Home {
+    font-family: $mainFont;
+    font-size: large;
+}
+
+.highlight1,
+.highlight2 {
+    width: $width;
+    height: $height;
+}
+
+.popover {
+    background-color: lightblue;
+    font-family: $mainFont;
+}
+
+.imgPopover {
+    @include imgPop;
+}
+
+#popover {
+    background-color: transparent;
+}
+
+.alert {
+    @include alert;
+}
+
+.Home,
+footer,
+.carousel-item {
+    opacity: $opacity;
+}
+
+.footer {
+    background-color: palegoldenrod;
+}
+
+.navbar {
+    background-color: indianred;
+}
+
+.Teams {
+    font-family: $teamsFont;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: white;
+}
+
+.modal {
+    color: black;
+}
+
+th, tbody, #searchInput, #clearSearch, #resetView {
+    font-family: $mainFont;
+}
+
+@font-face {
+    font-family: custom;
+    src: url(../super-smash/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf);
+}

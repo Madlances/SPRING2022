@@ -1,5 +1,5 @@
 <table id='<%=view.list.id%>' class="<%view.list.tableClasses%>">
-    <tr class="trow">
+    <tr class="trow text-center">
         <% view.columns.forEach( function(col, key){ %>
             <th class="sortable thead <%=view.list.thClasses%>" data-name="<%=col.name%>">
                 <%=col.label%>
@@ -11,7 +11,7 @@
     </tr>
 
     <% data.forEach(function(de) { %>
-        <tr data-id="<%=de.id%>" data-bs-toggle="popover">
+        <tr class="text-center" data-id="<%=de.id%>" data-bs-toggle="popover">
             <% view.columns.forEach(function(col) { %>
                 <td><%=de[col.name]%></td>
             <% }); %>

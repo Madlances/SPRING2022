@@ -29,7 +29,7 @@ var teamViewModel = {
             {
                 label: "Team Name",
                 name: "name",
-                popver: "true"
+                popover: "true"
             },
 
             {

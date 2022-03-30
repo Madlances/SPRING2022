@@ -1,0 +1,18 @@
+@mixin navbar {
+    color: #ffffff;
+    background-color: gray;
+}
+
+@mixin alert {
+    width: $width;
+    height: 50px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@mixin imgPop {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+}
