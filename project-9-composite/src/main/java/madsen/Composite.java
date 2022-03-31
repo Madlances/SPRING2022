@@ -1,33 +1,63 @@
 package madsen;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Composite extends Component{
-    private ArrayList<Component> items = new ArrayList<>();
-    private String fileName;
-    private String folderName;
+    public String name;
+    public Component parent;
+    Vector<Component> v = new Vector<>();
 
-    public Composite(String fileName, String folderName) {
-        this.fileName = fileName;
-        this.folderName = folderName;
+    public Composite(String name, Component parent) {
+        super(name, parent);
     }
 
     @Override
-    public String getFile() {
-        return fileName;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getFolder() {
-        return folderName;
+    public void setName(String n) {
+        name = n;
     }
 
     @Override
-    public void print() {}
+    public int count(int count) {
+        return count;
+    }
 
     @Override
-    public void add(Component component) {}
+    public int countAll(int countAll) {
+        return countAll;
+    }
 
     @Override
-    public void remove(Component component) {}
+    public void list(boolean list) {
+        System.out.println(name);
+    }
+
+    @Override
+    public void listAll(int indent) {
+        System.out.println(name);
+    }
+
+    @Override
+    public Component getParent() {
+        return parent;
+    }
+
+    @Override
+    public Vector<Component> getChildren() {
+        return v;
+    }
+
+    @Override
+    public void chDir(String name, boolean test) {
+        return;
+    }
+
+    @Override
+    public void addChild(Component c) {
+        throw new UnsupportedOperationException("Can't add child");
+    }
 }

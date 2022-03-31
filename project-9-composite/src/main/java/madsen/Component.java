@@ -1,38 +1,44 @@
 package madsen;
 
+import java.util.Vector;
+
 public abstract class Component {
 
-    public void add(Component component) {
-        throw new UnsupportedOperationException("Cannot add to the directory");
+    protected String name;
+    protected Component parent;
+
+    public Component(String name, Component parent) {
+        this.name = name;
+        this.parent = parent;
     }
 
-    public void remove(Component component) {
-        throw new UnsupportedOperationException("Cannot remove from the directory");
-    }
+    // this one
+   public abstract String getName();
 
-    public String getFile() {
-        throw new UnsupportedOperationException("Cannot get file");
-    }
+   // this one
+   public abstract void setName(String name);
 
-    public String getFolder() {
-        throw new UnsupportedOperationException("Cannot get folder");
-    }
+   // this one
+   public abstract int count(int count);
 
-    public void print() {
-        throw new UnsupportedOperationException("Cannot print");
-    }
+   // this one
+   public abstract int countAll(int countAll);
 
-    public void list() {}
+   // this one
+   public abstract void list(boolean list);
 
-    public void listall() {}
+   // this one
+   public abstract void listAll(int list);
 
-    public void chdir() {}
+   // this one
+   public abstract Component getParent();
 
-    public void up() {}
+   // this one
+   public abstract Vector<Component> getChildren();
 
-    public void count() {}
+   // this one
+   public abstract void chDir(String name, boolean test);
 
-    public void countall() {}
-
-    public void quit() {}
+   // this one
+   public abstract void addChild(Component child);
 }
