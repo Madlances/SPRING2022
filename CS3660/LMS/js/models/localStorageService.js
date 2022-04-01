@@ -10,7 +10,7 @@ completing this assignment! */
 4. SortCol and SortDir getters and setters should use 'this.model.options' instead of 'this.model.app'
 5. initModel method added-given*/
 
-class LocalStorageService {
+export default class LocalStorageService {
     "use strict"
     constructor(data, key, options={}) {
        

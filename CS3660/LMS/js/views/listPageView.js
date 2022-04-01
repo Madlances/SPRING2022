@@ -1,4 +1,4 @@
-class ListPageView {
+export default class ListPageView {
     constructor(storageService, viewModel) {
         this.storage = storageService;
         this.viewModel = viewModel;

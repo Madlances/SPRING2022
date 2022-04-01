@@ -1,4 +1,6 @@
-class AppController {
+import LocalStorageService from "../models/localStorageService.js";
+import ListPageView from "../views/listPageView.js";
+export default class AppController {
     constructor(appViewModel) {
         this.appViewModel = appViewModel;
         this.storageService = new LocalStorageService(this.data, this.entity, this.list.options);

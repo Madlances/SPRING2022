@@ -61,4 +61,5 @@ var mockTeamData = [
         "numPlayers": 2,
         "teamPhoto": "images/Smash_Ball.png"
     }
-]
+];
+export default mockTeamData;

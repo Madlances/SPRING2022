@@ -1,3 +1,4 @@
+import mockTeamData from "../../models/mock/mockTeamData.js";
 var teamViewModel = {
     entity: "teams",
     wrapperContainerId: "teamPageWrapper",
@@ -52,3 +53,4 @@ var teamViewModel = {
         ]
     }
 }
+export default teamViewModel;

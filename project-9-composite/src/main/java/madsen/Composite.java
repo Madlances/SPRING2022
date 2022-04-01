@@ -33,7 +33,10 @@ public class Composite extends Component{
 
     @Override
     public void list(boolean list) {
-        System.out.println(name);
+        for (Component c: v) {
+
+        }
+        System.out.println(name + "");
     }
 
     @Override
@@ -58,6 +61,6 @@ public class Composite extends Component{
 
     @Override
     public void addChild(Component c) {
-        throw new UnsupportedOperationException("Can't add child");
+        v.add(c);
     }
 }
