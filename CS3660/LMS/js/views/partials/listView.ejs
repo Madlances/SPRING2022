@@ -16,7 +16,7 @@
                 <td><%=de[col.name]%></td>
             <% }); %>
             <td>
-                <span class="bi bi-pencil-square"></span>
+                <span id="editTeam" class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#<%=view.formModal%>"></span>
                 <span class="bi bi-trash2-fill" data-bs-toggle="modal" data-bs-target="#myModal"></span>
             </td>
         </tr>

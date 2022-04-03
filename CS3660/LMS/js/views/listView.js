@@ -1,12 +1,15 @@
-export default class ListPageView {
+import View from "./view.js"
+import FormView from "./formView.js"
+
+export default class ListView extends View {
     constructor(storageService, viewModel) {
-        this.storage = storageService;
-        this.viewModel = viewModel;
+        super(storageService, viewModel);
+        this.entityViewModel = viewModel;
         this.listTemplateHtml = "";
         this.wrapperTemplateHtml = "";
-        this.searchWaiter = null;
     }
 
+    // taking most of the functions from listPageView
     get list() {
         return this.viewModel.list;
     }
@@ -15,24 +18,27 @@ export default class ListPageView {
         return this.viewModel;
     }
 
-    get wrapperTemplateUrl() {
-        return this.view.wrapperTemplateUrl;
-    }
+    // get wrapperTemplateUrl() {
+    //     return this.view.wrapperTemplateUrl;
+    // }
 
-    get $wrapperContainer() {
-        return $("#"+this.view.wrapperContainerId);
-    }
+    // get $wrapperContainer() {
+    //     return $("#"+this.view.wrapperContainerId);
+    // }
 
-    get $listContainer() {
-        return $("#"+this.view.listContainerId);
-    }
+    // get $listContainer() {
+    //     return $("#"+this.view.listContainerId);
+    // }
 
-    get listTemplateUrl() {
-        return this.view.listTemplateUrl;
-    }
+    // get listTemplateUrl() {
+    //     return this.view.listTemplateUrl;
+    // }
+
+    get formModal() {return this.viewModel.formContainerId}
+    get $formModal() {return $('#'+this.viewModel.formContainerId)}
 
     get columns() {
-        return this.view.list.columns;
+        return this.list.columns;
     }
 
     get $alertContainer() {
@@ -52,32 +58,38 @@ export default class ListPageView {
         this.render();
     }
 
-    async render() {
-        await this.renderWrapper();
-        await this.renderList();
+    // async render() {
+    //     await this.renderWrapper();
+    //     await this.renderItem();
+    // }
+
+    async getViewData() {
+        return await this.storage.list();
     }
 
     async renderWrapper() {
         this.$wrapperContainer.empty();
         if (!this.wrapperTemplateHtml.length > 0) {
-            this.wrapperTemplateHtml = await this.getFileContents(this.wrapperTemplateUrl);
+            this.wrapperTemplateHtml = await this.utils.getFileContents(this.wrapperTemplateUrl);
         }
-        this.$wrapperContainer.html(ejs.render(this.wrapperTemplateHtml, {view: this.viewModel}));
+        // this.$wrapperContainer.html(ejs.render(this.wrapperTemplateHtml, {view: this.viewModel}));
+        this.renderTemplate(this.$wrapperContainer, this.wrapperTemplateHtml, {view: this.viewModel});
         await this.bindWrapperEvents();
     }
 
-    async renderList() {
+    async renderItem() {
         this.$listContainer.empty();
-        this.data = await this.storage.list();
+        this.data = await this.getViewData();
         if (!this.listTemplateHtml.length > 0) {
-            this.listTemplateHtml = await this.getFileContents(this.listTemplateUrl);
+            this.listTemplateHtml = await this.utils.getFileContents(this.listTemplateUrl);
         }
-        this.$listContainer.html(ejs.render(this.listTemplateHtml, {view: this, data: this.data}));
+        // this.$listContainer.html(ejs.render(this.listTemplateHtml, {view: this, data: this.data}));
+        this.renderTemplate(this.$listContainer, this.listTemplateHtml, {view: this, data: this.data});
         this.$headerIcon.show();
-        this.bindListEvents(this.data);
+        this.bindItemEvents(this.data);
     }
 
-    bindListEvents(data) {
+    bindItemEvents(data) {
         let that = this;
 
         for (let col of this.columns) {
@@ -95,7 +107,7 @@ export default class ListPageView {
 
                 $(`#${dataName}-${this.storage.sortDir}`).show();
                 that.storage.sortCol = dataName;
-                that.renderList();
+                that.renderItem();
             });
         }
         this.initPopver();
@@ -125,10 +137,27 @@ export default class ListPageView {
             this.addAlert(itemName);
 
             this.deleteListItem(itemId).then((out) => {
-                this.renderList();
+                this.renderItem();
             }).catch((e) => {
                 console.error(e);
             });
+        });
+
+        // add in form modal
+        let $myFormModal = this.$formModal;
+        let viewData = this.view;
+    
+        $myFormModal.on("show.bs.modal", function(ev) {
+            let button = ev.relatedTarget;
+
+            if (button.id == viewData.addTeamId) {
+                viewData.form.currentItemId = undefined;
+                that.createTeam(viewData);
+            }
+            if (button.id == viewData.editTeamId) {
+                viewData.form.currentItemId = "asdf";
+                that.editTeam(viewData);
+            }
         });
 
         $('#resetView').off("click").on("click", (e) => {
@@ -139,7 +168,7 @@ export default class ListPageView {
             this.searchVal = $(e.target).val();
             if (this.searchVal == "") {
                 this.storage.filterStr = "";
-                this.renderList();
+                this.renderItem();
             }
             this.runSearch();
         });
@@ -147,7 +176,7 @@ export default class ListPageView {
         $('#clearSearch').off("click").on("click", (e) => {
             $('#searchInput').val("");
             this.storage.filterStr = "";
-            this.renderList();
+            this.renderItem();
         });
     }
 
@@ -165,14 +194,14 @@ export default class ListPageView {
             if (this.searchVal.length > 1) {
                 this.storage.filterStr = this.searchVal;
                 this.storage.filterCol = this.storage.sortCol;
-                this.renderList();
+                this.renderItem();
             }
         }, 250);
     }
 
     async deleteListItem(id) {
         this.storage.delete(id);
-        this.renderList();
+        this.renderItem();
     }
 
     initPopver() {
@@ -199,7 +228,14 @@ export default class ListPageView {
     });
     }
 
-    async getFileContents(url) {
-        return await $.get(url);
+    async createTeam(data) {
+        // debugger;
+        let formView = new FormView(this.storage, this.viewModel, this);
+        await formView.renderItem(data, false);
+    }
+
+    async editTeam(data) {
+        let formView = new FormView(this.storage, this.viewModel, this);
+        await formView.renderItem(data, true);
     }
 }

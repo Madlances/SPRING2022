@@ -5,6 +5,7 @@ var mockTeamData = [
         "coachName": "Luigi",
         "coachPhone": "(666)-666-6666",
         "numPlayers": 1,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -14,6 +15,7 @@ var mockTeamData = [
         "coachName": "Kirby",
         "coachPhone": "(123)-456-7890",
         "numPlayers": 2,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -23,6 +25,7 @@ var mockTeamData = [
         "coachName": "Pacman",
         "coachPhone": "(555)-555-5555",
         "numPlayers": 3,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -32,6 +35,7 @@ var mockTeamData = [
         "coachName": "Mario",
         "coachPhone": "(232)-323-2323",
         "numPlayers": 2,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -41,6 +45,7 @@ var mockTeamData = [
         "coachName": "Lucas",
         "coachPhone": "(111)-111-1111",
         "numPlayers": 2,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -50,6 +55,7 @@ var mockTeamData = [
         "coachName": "Bayonetta",
         "coachPhone": "(454)-545-4545",
         "numPlayers": 2,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     },
 
@@ -59,6 +65,7 @@ var mockTeamData = [
         "coachName": "Samus",
         "coachPhone": "(999)-999-9999",
         "numPlayers": 2,
+        "notes" : "notes!",
         "teamPhoto": "images/Smash_Ball.png"
     }
 ];

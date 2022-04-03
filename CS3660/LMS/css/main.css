@@ -79,7 +79,7 @@ footer,
   color: black;
 }
 
-th, tbody, #searchInput, #clearSearch, #resetView {
+th, tbody, #searchInput, #clearSearch, #resetView, #addTeam {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
