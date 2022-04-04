@@ -10,7 +10,6 @@ export default class FormView extends View {
 
     this.parentView = parentView;
     this.formChanged = false;
-    this.newFormId = 6;
   }
 
   get fields() {
@@ -61,19 +60,20 @@ export default class FormView extends View {
     let inputs = this.$inputs;
     let storageService = this.storage;
     let parentView = this.parentView;
-    let newFormId = this.newFormId;
     let currentItemId = this.viewModel.form.currentItemId;
+    let that = this;
 
+    $('label[for="id"]').hide(); // hide id in form
     this.$form.submit(function (ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      if (currentItemId == undefined) {
-        if (this.checkValidity()) {
+      if (this.checkValidity()) {
+        if (currentItemId == undefined) {
           let inputFields = {};
           for (let input of inputs) {
             inputFields[input.id] = input.value;
           }
-          inputFields.id = ++newFormId;
+          inputFields.id = that.viewModel.nextRowId++;
           inputFields["teamPhoto"] = "images/Smash_Ball.png";
           storageService
             .create(inputFields)
@@ -85,15 +85,11 @@ export default class FormView extends View {
               console.log(error);
             });
         } else {
-          $(this).addClass("was-validated");
-        }
-      } else {
-        if (this.checkValidity()) {
           let inputFields = {};
           for (let input of inputs) {
             inputFields[input.id] = input.value;
           }
-          inputFields.id = newFormId;
+          inputFields.id = currentItemId;
           inputFields["teamPhoto"] = "images/Smash_Ball.png";
           storageService
             .update(inputFields)
@@ -104,29 +100,29 @@ export default class FormView extends View {
             .catch((error) => {
               console.log(error);
             });
-        } else {
-          $(this).addClass("was-validated");
         }
+      } else {
+        $(this).addClass("was-validated");
       }
     });
 
     this.$inputs.on("change", function (ev) {
       this.formChanged = true;
-      console.log("inputChanged")
+      console.log("inputChanged");
     });
 
     // still need to figure out when a input has been changed
     if (currentItemId == undefined) {
-      $("#cancelButton").click(function() {
-        $myFormModal.modal("hide")
+      $("#cancelButton").click(function () {
+        $myFormModal.modal("hide");
       });
     } else {
       // if (this.formChanged == true) {
-        $("#cancelButton").click(function() {
-          if (confirm("Are you sure you want to cancel your changes?")) {
-            $myFormModal.modal("hide");
-          }
-        });
+      $("#cancelButton").click(function () {
+        if (confirm("Are you sure you want to cancel your changes?")) {
+          $myFormModal.modal("hide");
+        }
+      });
       // }
     }
   }

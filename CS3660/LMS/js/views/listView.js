@@ -7,6 +7,7 @@ export default class ListView extends View {
     this.entityViewModel = viewModel;
     this.listTemplateHtml = "";
     this.wrapperTemplateHtml = "";
+    this.searchWaiter = null;
   }
 
   // taking most of the functions from listPageView
@@ -142,12 +143,15 @@ export default class ListView extends View {
 
     $myFormModal.on("show.bs.modal", function (ev) {
       let button = ev.relatedTarget;
+      let itemName = $myModal.attr("data-name");
+      console.log(itemName);
 
       if (button.id == viewData.addTeamId) {
         viewData.form.currentItemId = undefined;
         that.createEditTeam(viewData);
       } else if (button.id == viewData.editTeamId) {
         viewData.form.currentItemId = "edit";
+        // viewData.form.field.defaultValue = itemName;
         that.createEditTeam(viewData);
       }
     });

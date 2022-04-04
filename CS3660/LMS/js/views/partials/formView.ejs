@@ -38,9 +38,24 @@ Notes:
         <% view.viewModel.form.fields.forEach( function(field){ %>
             <div class="col-md-12 mb-3">
                 <label for="<%=field.label%>"><%=field.label%></label>
-                <input type="<%=field.attributes.type%>" name="<%=field.name %>" id="<%=field.name %>" value="<%=field.defaultValue %>" 
-                placeholder="<%= field.attributes.placeholder %>" 
-                title="<%= field.attributes.title %> " class="<%=field.attributes.class %>" required="<%=field.validation.required %>">
+                 <% if (field.attributes.pattern == undefined) { %> 
+                <% if (field.validation.required) {%> 
+                  <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
+                  placeholder="<%= field.attributes.placeholder %>" 
+                  title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
+                  type="<%=field.attributes.type%>" required="<%= field.validation.required %>">
+                <% } else {%>
+                  <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
+                  placeholder="<%= field.attributes.placeholder %>" 
+                  title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
+                  type="<%=field.attributes.type%>">
+                <% } %>  
+              <% } else {%> 
+                <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
+                placeholder="<%= field.attributes.placeholder %>" pattern="<%= field.attributes.pattern %>" 
+                title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
+                type="<%=field.attributes.type%>" required="<%= field.validation.required %>">
+              <% } %> 
                 <div class="invalid-feedback"><%=field.validation.requiredMessage%></div>
             </div>
         <% }) %>
