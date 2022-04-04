@@ -119,7 +119,10 @@ export default class FormView extends View {
     } else {
       // if (this.formChanged == true) {
       $("#cancelButton").click(function () {
-        if (confirm("Are you sure you want to cancel your changes?")) {
+        const hasChanged = Array.from(inputs).some(input => 
+          that.data.form.fields.find(field => field.name == input.id).defaultValue != input.value
+        );
+        if (!hasChanged || confirm("Are you sure you want to cancel your changes?")) {
           $myFormModal.modal("hide");
         }
       });
