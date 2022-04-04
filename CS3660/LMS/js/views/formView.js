@@ -106,11 +106,6 @@ export default class FormView extends View {
       }
     });
 
-    this.$inputs.on("change", function (ev) {
-      this.formChanged = true;
-      console.log("inputChanged");
-    });
-
     if (currentItemId == undefined) {
       $("#cancelButton").click(function () {
         $myFormModal.modal("hide");
