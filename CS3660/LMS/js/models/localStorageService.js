@@ -161,4 +161,12 @@ export default class LocalStorageService {
   cloneObject(obj) {
     return JSON.parse(JSON.stringify(obj));
   }
+  newId() {
+    const newRandomNumber = () => Math.floor(Math.random() * 10000);
+    let newId = newRandomNumber();
+    while (this.getItemIndex(newId) !== -1) {
+      newId = newRandomNumber();
+    }
+    return newId;
+  }
 }

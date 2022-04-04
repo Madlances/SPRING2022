@@ -73,7 +73,7 @@ export default class FormView extends View {
           for (let input of inputs) {
             inputFields[input.id] = input.value;
           }
-          inputFields.id = that.viewModel.nextRowId++;
+          inputFields.id = storageService.newId();
           inputFields["teamPhoto"] = "images/Smash_Ball.png";
           storageService
             .create(inputFields)

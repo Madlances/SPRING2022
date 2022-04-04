@@ -12,7 +12,6 @@ var teamViewModel = {
   addTeamId: "addTeam",
   editTeamId: "editTeam",
   formContainerId: "formModal",
-  nextRowId: mockTeamData.length,
   list: {
     options: {
       sortCol: "name",

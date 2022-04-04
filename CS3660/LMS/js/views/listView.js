@@ -140,19 +140,24 @@ export default class ListView extends View {
     // add in form modal
     let $myFormModal = this.$formModal;
     let viewData = this.view;
+    const formData = viewData.form;
 
     $myFormModal.on("show.bs.modal", function (ev) {
       let button = ev.relatedTarget;
-      let itemName = $myModal.attr("data-name");
-      console.log(itemName);
 
       if (button.id == viewData.addTeamId) {
-        viewData.form.currentItemId = undefined;
-        that.createEditTeam(viewData);
+        formData.currentItemId = undefined;
+        formData.fields.forEach(field => {
+          field.defaultValue = "";
+        });
+        that.createMemberView(viewData);
       } else if (button.id == viewData.editTeamId) {
-        viewData.form.currentItemId = "edit";
-        // viewData.form.field.defaultValue = itemName;
-        that.createEditTeam(viewData);
+        formData.currentItemId = button.getAttribute('data-row-id');
+        const currentRow = that.data.find(row => row.id == formData.currentItemId);
+        formData.fields.forEach(field => {
+          field.defaultValue = currentRow[field.name];
+        });
+        that.createMemberView(viewData);
       }
     });
 
@@ -232,7 +237,7 @@ export default class ListView extends View {
     });
   }
 
-  async createEditTeam(data) {
+  async createMemberView(data) {
     let formView = new FormView(this.storage, this.viewModel, this);
     await formView.renderItem(data);
   }
