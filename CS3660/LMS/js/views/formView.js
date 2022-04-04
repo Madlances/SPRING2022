@@ -5,7 +5,6 @@ export default class FormView extends View {
   constructor(storageService, viewModel, parentView) {
     super(storageService, viewModel);
     this.entityViewModel = viewModel;
-    this.currentItemId = null;
     this.formTemplateHtml = "";
     this.wrapperTemplateHtml = "";
 
@@ -17,10 +16,6 @@ export default class FormView extends View {
   get fields() {
     return this.viewModel.form.fields;
   }
-
-  // get edit() {
-  //     return this.viewModel.editFormTitle;
-  // }
 
   get formId() {
     return this.viewModel.form.id;
@@ -42,15 +37,10 @@ export default class FormView extends View {
     return $("#" + this.formId + " input");
   }
 
-//   async fillForm() {
-//     return;
-//   }
-
   async renderWrapper() {} // needed so parent class won't complain
 
   // similar to renderList
-  async renderItem(data, edit) {
-      // debugger;
+  async renderItem(data) {
     this.$formContainer.empty();
     this.data = data;
     if (!this.formTemplateHtml.length > 0) {
@@ -62,9 +52,6 @@ export default class FormView extends View {
       view: this,
       data: data,
     });
-    // if (edit) {
-    //   await this.fillForm();
-    // }
     await this.bindItemEvents();
   }
 
@@ -75,33 +62,51 @@ export default class FormView extends View {
     let storageService = this.storage;
     let parentView = this.parentView;
     let newFormId = this.newFormId;
+    let currentItemId = this.viewModel.form.currentItemId;
+
     this.$form.submit(function (ev) {
       ev.preventDefault();
       ev.stopPropagation();
-
-      if (this.checkValidity()) {
-        let inputFields = {};
-        for (let input of inputs) {
-          inputFields[input.id] = input.value;
+      if (currentItemId == undefined) {
+        if (this.checkValidity()) {
+          let inputFields = {};
+          for (let input of inputs) {
+            inputFields[input.id] = input.value;
+          }
+          inputFields.id = ++newFormId;
+          inputFields["teamPhoto"] = "images/Smash_Ball.png";
+          storageService
+            .create(inputFields)
+            .then((out) => {
+              parentView.renderItem();
+              $myFormModal.modal("hide");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          $(this).addClass("was-validated");
         }
-        //TODO: check to see if id exits which means its an update and not create
-        // let checkExist = storageService.read(inputFields.id);
-        // if (checkExist == null) {
-        //   //create function
-        // } else {
-        //   //edit function
-        // }
-        inputFields.id = ++newFormId;
-        inputFields["teamPhoto"] = "images/Smash_Ball.png";
-        storageService
-          .create(inputFields)
-          .then((out) => {
-            parentView.renderItem();
-            $myFormModal.modal("hide");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      } else if (currentItemId != undefined) {
+        if (this.checkValidity()) {
+          let inputFields = {};
+          for (let input of inputs) {
+            inputFields[input.id] = input.value;
+          }
+          inputFields.id = newFormId;
+          inputFields["teamPhoto"] = "images/Smash_Ball.png";
+          storageService
+            .update(inputFields)
+            .then((out) => {
+              parentView.renderItem();
+              $myFormModal.modal("hide");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          $(this).addClass("was-validated");
+        }
       }
     });
 
