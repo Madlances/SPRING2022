@@ -111,13 +111,11 @@ export default class FormView extends View {
       console.log("inputChanged");
     });
 
-    // still need to figure out when a input has been changed
     if (currentItemId == undefined) {
       $("#cancelButton").click(function () {
         $myFormModal.modal("hide");
       });
     } else {
-      // if (this.formChanged == true) {
       $("#cancelButton").click(function () {
         const hasChanged = Array.from(inputs).some(input => 
           that.data.form.fields.find(field => field.name == input.id).defaultValue != input.value
@@ -126,7 +124,6 @@ export default class FormView extends View {
           $myFormModal.modal("hide");
         }
       });
-      // }
     }
   }
 

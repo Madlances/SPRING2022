@@ -161,6 +161,7 @@ export default class LocalStorageService {
   cloneObject(obj) {
     return JSON.parse(JSON.stringify(obj));
   }
+  // create new id for the new team
   newId() {
     const newRandomNumber = () => Math.floor(Math.random() * 10000);
     let newId = newRandomNumber();
