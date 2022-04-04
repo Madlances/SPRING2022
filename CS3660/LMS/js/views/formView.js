@@ -87,7 +87,7 @@ export default class FormView extends View {
         } else {
           $(this).addClass("was-validated");
         }
-      } else if (currentItemId != undefined) {
+      } else {
         if (this.checkValidity()) {
           let inputFields = {};
           for (let input of inputs) {
@@ -112,8 +112,23 @@ export default class FormView extends View {
 
     this.$inputs.on("change", function (ev) {
       this.formChanged = true;
-      console.log("input changed");
+      console.log("inputChanged")
     });
+
+    // still need to figure out when a input has been changed
+    if (currentItemId == undefined) {
+      $("#cancelButton").click(function() {
+        $myFormModal.modal("hide")
+      });
+    } else {
+      // if (this.formChanged == true) {
+        $("#cancelButton").click(function() {
+          if (confirm("Are you sure you want to cancel your changes?")) {
+            $myFormModal.modal("hide");
+          }
+        });
+      // }
+    }
   }
 
   async bindWrapperEvents() {} // needed so parent class won't complain
