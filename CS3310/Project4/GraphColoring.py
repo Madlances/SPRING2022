@@ -68,19 +68,7 @@ graph, colors, c)
       
 # Driver Code
 start = timeit.default_timer()
-# size = randint(0, 20)
-#nb of vertices 
-# vertex_nb = size
-# nb of colors 
 color_nb = 3 
-# Initiate vertex colors 
-# colors = [0] * vertex_nb
-# graph = [ 
-#     [0, 1, 1, 1], 
-#     [1, 0, 1, 0], 
-#     [1, 1, 0, 1], 
-#     [1, 0, 1, 0], 
-# ]
 
 def graph(size):
     g = [[None for _ in range(size)] for _ in range(size)]
