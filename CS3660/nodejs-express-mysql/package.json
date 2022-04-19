@@ -1,22 +1,21 @@
 {
-  "name": "nodejs-express-mysql",
-  "version": "1.0.0",
-  "description": "Node.js Restful CRUD API iwth Node.js, Express, and MySQL",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "nodejs",
-    "express",
-    "mysql",
-    "restapi"
-  ],
-  "author": "kassi",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.3",
-    "mysql": "^2.18.1"
-  }
+    "name": "teamsapi",
+    "version": "1.0.0",
+    "description": "Web Programming 3660 API",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "kassi",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.3",
+        "express-validator": "^6.14.0",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.3.3"
+    },
+    "devDependencies": {
+        "prettier": "^2.6.2"
+    }
 }

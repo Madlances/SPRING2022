@@ -1,6 +1,6 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "123456",
-    DB: "testdb"
-  };
+    HOST: 'jenson-mysql.c8qwuofu4md8.us-east-1.rds.amazonaws.com',
+    USER: 'kennyjay',
+    PASSWORD: 'mysqluser',
+    DB: 'km_teams_sp22',
+};
