@@ -8,9 +8,8 @@ var corsOptions = {
     origin: 'amazonaws.com',
 };
 app.use(cors(corsOptions));
-// parse requests of content-type - application/json
+// parse requests of content-type
 app.use(express.json());
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 // simple route
 app.get('/', (req, res) => {
@@ -20,7 +19,6 @@ app.get('/', (req, res) => {
 teamRoutes(app);
 lookupRoutes(app);
 
-// require("./app/routes/tutorial.routes.js")(app);
 // set port, listen for requests
 const PORT = 8080;
 app.listen(PORT, () => {
