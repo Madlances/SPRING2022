@@ -48,7 +48,10 @@ Team.getAll = async (
     let filterQuery = ` WHERE ${filterCol} LIKE \'%${filterStr}%\'`;
     let limitOffsetQuery = ` LIMIT ${limitNum} OFFSET ${offsetNum}`;
 
-    if (filterCol != undefined && filterStr != undefined) query += filterQuery;
+    if (filterCol != undefined && filterStr != undefined) {
+        query += filterQuery;
+    }
+
     if (sortCol != undefined && sortDir != undefined) {
         if (sortDir == 'dsc' || sortDir == 'DSC') sortDir = 'DESC';
         let sortQuery = ` ORDER BY ${sortCol} ${sortDir}`;
