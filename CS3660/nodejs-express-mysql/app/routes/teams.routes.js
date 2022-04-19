@@ -20,7 +20,6 @@ module.exports = (app) => {
     router.get('/teams/:id', teams.findOne);
     router.put('/teams/:id', teams.validate('updateTeam'), teams.update);
     router.delete('/teams/:id', teams.delete);
-    router.delete('/teams', teams.deleteAll);
 
     app.use('/', router);
 };

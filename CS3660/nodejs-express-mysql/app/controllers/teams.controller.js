@@ -31,7 +31,7 @@ exports.validate = (method) => {
     }
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: 'Content cannot be empty!',
@@ -49,20 +49,18 @@ exports.create = (req, res) => {
         notes: req.body.notes,
     });
 
-    Team.create(team, (err, data) => {
-        if (err) {
-            res.status(500).send({
-                message:
-                    err.message ||
-                    'Some error occurred while creating the Team.',
-            });
-        } else {
-            res.status(201).send(data);
-        }
-    });
+    try {
+        const data = await Team.create(team);
+        res.status(201).send(data);
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || 'Some error occurred while creating the Team.',
+        });
+    }
 };
 
-exports.findAll = (req, res) => {
+exports.findAll = async (req, res) => {
     let queryFilterCol = req.query.filterCol;
     let queryFilterStr = req.query.filterStr;
     let querySortCol = req.query.sortCol;
@@ -70,65 +68,45 @@ exports.findAll = (req, res) => {
     let queryLimit = req.query.limit;
     let queryOffset = req.query.offset;
 
-    Team.getAll(
-        queryFilterCol,
-        queryFilterStr,
-        querySortCol,
-        querySortDir,
-        queryLimit,
-        queryOffset,
-        (err, data) => {
-            if (err) {
-                res.status(500).send({
-                    message:
-                        err.message ||
-                        'Some error occured while retrieving all teams.',
-                });
-            } else {
-                res.send(data);
-            }
-        },
-    );
+    try {
+        const data = await Team.getAll(
+            queryFilterCol,
+            queryFilterStr,
+            querySortCol,
+            querySortDir,
+            queryLimit,
+            queryOffset,
+        );
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || 'Some error occured while retrieving all teams.',
+        });
+    }
 };
 
-exports.findOne = (req, res) => {
-    Team.findById(req.params.id, (err, data) => {
-        if (err) {
-            if (err.kind === 'not_found') {
-                res.status(404).send({
-                    message: `Not found Team with id ${req.params.id}.`,
-                });
-            } else {
-                res.status(500).send({
-                    message: 'Error retrieving Team with id ' + req.params.id,
-                });
-            }
+exports.findOne = async (req, res) => {
+    try {
+        const data = await Team.findById(req.params.id);
+        res.send(data);
+    } catch (err) {
+        console.log(err);
+        if (err.kind === 'not_found') {
+            res.status(404).send({
+                message: `Not found Team with id ${req.params.id}.`,
+            });
         } else {
-            res.send(data);
+            res.status(500).send({
+                message:
+                    err.message ||
+                    'Error retrieving Team with id ' + req.params.id,
+            });
         }
-    });
+    }
 };
 
-exports.findName = (req, res) => {
-    Team.findByName(req.query.name, (err, data) => {
-        if (err) {
-            if (err.kind === 'not_found') {
-                res.status(404).send({
-                    message: `Not found Team with name ${req.params.name}.`,
-                });
-            } else {
-                res.status(500).send({
-                    message:
-                        'Error retrieving Team with name ' + req.params.name,
-                });
-            }
-        } else {
-            res.send(data);
-        }
-    });
-};
-
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
     if (!req.body) {
         res.status(404).send({
             message: 'Content cannot be empty!',
@@ -140,51 +118,35 @@ exports.update = (req, res) => {
     }
     console.log(req.body);
 
-    Team.updateById(req.params.id, new Team(req.body), (err, data) => {
-        if (err) {
-            if (err.kind === 'not_found') {
-                res.status(404).send({
-                    message: `Not found Team with id ${req.params.id}.`,
-                });
-            } else {
-                res.status(500).send({
-                    message: 'Error updating Team with id ' + req.params.id,
-                });
-            }
-        } else {
-            res.send(data);
-        }
-    });
-};
-
-exports.delete = (req, res) => {
-    Team.remove(req.params.id, (err, data) => {
-        if (err) {
-            if (err.kind === 'not_found') {
-                res.status(404).send({
-                    message: `Not found Team with id ${req.params.id}.`,
-                });
-            } else {
-                res.status(500).send({
-                    message: 'Could not delete Team with id ' + req.params.id,
-                });
-            }
-        } else {
-            res.send({ message: `Team was deleted successfully!` });
-        }
-    });
-};
-
-exports.deleteAll = (req, res) => {
-    Team.removeAll((err, data) => {
-        if (err) {
-            res.status(500).send({
-                message:
-                    err.message ||
-                    'Some error occurred while removing all teams',
+    try {
+        const data = await Team.updateById(req.params.id, new Team(req.body));
+        res.send(data);
+    } catch (err) {
+        if (err.kind === 'not_found') {
+            res.status(404).send({
+                message: `Not found Team with id ${req.params.id}.`,
             });
         } else {
-            res.send({ message: 'All teams were deleted successfully!' });
+            res.status(500).send({
+                message: 'Error updating Team with id ' + req.params.id,
+            });
         }
-    });
+    }
+};
+
+exports.delete = async (req, res) => {
+    try {
+        const data = await Team.remove(req.params.id, new Team(req.body));
+        res.send({ message: `Team was deleted successfully!` });
+    } catch (err) {
+        if (err.kind === 'not_found') {
+            res.status(404).send({
+                message: `Not found Team with id ${req.params.id}.`,
+            });
+        } else {
+            res.status(500).send({
+                message: 'Could not delete Team with id ' + req.params.id,
+            });
+        }
+    }
 };

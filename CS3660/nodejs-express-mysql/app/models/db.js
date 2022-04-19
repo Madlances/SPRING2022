@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const dbConfig = require('../config/db.config.js');
 
 // Create a connection to the database
@@ -10,9 +10,9 @@ const connection = mysql.createConnection({
 });
 
 // open the MySQL connection
-connection.connect((error) => {
-    if (error) throw error;
-    console.log(`Successfully connected to ${dbConfig.DB} database.`);
-});
+// connection.connect((error) => {
+//     if (error) throw error;
+//     console.log(`Successfully connected to ${dbConfig.DB} database.`);
+// });
 
 module.exports = connection;

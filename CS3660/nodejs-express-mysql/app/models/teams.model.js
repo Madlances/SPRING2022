@@ -1,4 +1,4 @@
-const sql = require('./db.js');
+const connection = require('./db.js');
 
 const Team = function (team) {
     this.id = team.id;
@@ -8,64 +8,41 @@ const Team = function (team) {
     this.notes = team.notes;
 };
 
-Team.create = (newTeam, result) => {
-    sql.query('INSERT INTO teams SET ?', newTeam, (err, res) => {
-        if (err) {
-            console.log('error inserting into teams table', err);
-            result(err, null);
-            return;
-        }
+Team.create = async (newTeam) => {
+    try {
+        const conn = await connection;
+        const res = await conn.query('INSERT INTO teams SET ?', newTeam);
         console.log('created team: ', { ...newTeam, id: res.insertId });
-        result(null, { ...newTeam, id: res.insertId });
-    });
+        return { ...newTeam, id: res[0].insertId };
+    } catch (err) {
+        console.log('error inserting into teams table', err);
+        throw err;
+    }
 };
 
-Team.findById = (id, result) => {
-    sql.query(`SELECT * FROM teams WHERE id = ${id}`, (err, res) => {
-        if (err) {
-            console.log('error selecting team by id', err);
-            result(null, res[0]);
-            return;
+Team.findById = async (id) => {
+    try {
+        const conn = await connection;
+        const res = await conn.query('SELECT * FROM teams WHERE id = ?', id);
+        if (res[0].length > 0) {
+            console.log('found team', res[0][0]);
+            return res[0][0];
+        } else {
+            throw { kind: 'not_found' };
         }
-        if (res.length) {
-            console.log('found team', res[0]);
-            result(null, res[0]);
-            return;
-        }
-        result({ kind: 'not_found' }, null);
-    });
+    } catch (err) {
+        console.log('error selecting team by id', err);
+        throw err;
+    }
 };
 
-Team.findByName = (teamName, result) => {
-    sql.query(
-        `SELECT COUNT(name) AS count FROM teams WHERE name = ${teamName}`,
-        (err, res) => {
-            if (err) {
-                console.log(`error selecting teams with the name ${teamName}`);
-                result(null, res[0]);
-                return;
-            }
-            if (res.length) {
-                console.log(
-                    `found teams with the name ${teamName}, count: ` +
-                        res[0].count,
-                );
-                result(null, res[0]);
-                return;
-            }
-            result({ kind: 'not_found' }, null);
-        },
-    );
-};
-
-Team.getAll = (
+Team.getAll = async (
     filterCol,
     filterStr,
     sortCol,
     sortDir,
     limitNum,
     offsetNum,
-    result,
 ) => {
     let query = 'SELECT * FROM teams';
     let filterQuery = ` WHERE ${filterCol} LIKE \'%${filterStr}%\'`;
@@ -80,82 +57,69 @@ Team.getAll = (
 
     if (limitNum != undefined && offsetNum != undefined)
         query += limitOffsetQuery;
-    console.log('hi', query);
-    sql.query(query, (err, res) => {
-        if (err) {
-            console.log('error getting all teams: ', err);
-            result(null, err);
-            return;
-        }
-        //console.log('teams: ', res)
-        result(null, res);
-    });
+    try {
+        const conn = await connection;
+        const res = await conn.query(query);
+        return res[0];
+    } catch (err) {
+        console.log('error getting all teams: ', err);
+        throw err;
+    }
 };
 
-Team.updateById = (id, team, result) => {
-    sql.query(
-        'UPDATE teams SET name = ?, coach_id = ?, league_id = ?, notes = ? WHERE id = ?',
-        [team.name, team.coach_id, team.league_id, team.notes, id],
-        (err, res) => {
-            if (err) {
-                console.log('error updating by id: ', err);
-                result(null, err);
-                return;
-            }
-            if (res.affectedRows == 0) {
-                result({ kind: 'not_found' }, null);
-                return;
-            }
+Team.updateById = async (id, team) => {
+    try {
+        const conn = await connection;
+        const res = await conn.query(
+            'UPDATE teams SET name = ?, coach_id = ?, league_id = ?, notes = ? WHERE id = ?',
+            [team.name, team.coach_id, team.league_id, team.notes, id],
+        );
+        if (res[0].affectedRows > 0) {
             console.log('updated teams: ', { id: id, ...team });
-            result(null, { id: id, ...team });
-        },
-    );
+            return { id: id, ...team };
+        } else {
+            throw { kind: 'not_found' };
+        }
+    } catch (err) {
+        console.log('error updating by id: ', err);
+        throw err;
+    }
 };
 
-Team.remove = (id, result) => {
-    sql.query('DELETE FROM teams WHERE id = ?', id, (err, res) => {
-        if (err) {
-            console.log('error deleting team: ', err);
-            result(null, err);
+Team.remove = async (id) => {
+    try {
+        const conn = await connection;
+        const res = await conn.query('DELETE FROM teams WHERE id = ?', id);
+        if (res[0].affectedRows > 0) {
+            console.log('deleted team with id: ', id);
             return;
+        } else {
+            throw { kind: 'not_found' };
         }
-        if (res.affectedRows == 0) {
-            result({ kind: 'not_found' }, null);
-            return;
-        }
-        console.log('deleted team with id: ', id);
-        result(null, res);
-    });
-};
-
-Team.removeAll = (result) => {
-    sql.query('DELETE FROM teams', (err, res) => {
-        if (err) {
-            console.log('error deleting the teams table: ', err);
-            result(null, err);
-            return;
-        }
-        console.log(`deleted ${res.affectedRows} teams`);
-        result(null, res);
-    });
+    } catch (err) {
+        console.log('error deleting team: ', err);
+        throw err;
+    }
 };
 
 Team.checkDuplicateName = async (value) => {
-    return new Promise((resolve, reject) => {
-        sql.query('SELECT * FROM teams WHERE name = ?', [value], (err, res) => {
-            if (err) {
-                console.log('error checking for duplicate name: ', err);
-                error();
-            }
-            if (res.length > 0) {
-                console.log(`Name ${value} is a duplicate`);
-                reject('duplicate team name');
-            } else {
-                console.log(`Name ${value} is not a duplicate`);
-                resolve(false);
-            }
-        });
-    });
+    try {
+        const conn = await connection;
+        const res = await conn.query(
+            'SELECT * FROM teams WHERE name = ?',
+            value,
+        );
+        if (res[0].length > 0) {
+            console.log(`Name ${value} is a duplicate`);
+            throw new Error('duplicate team name');
+        } else {
+            console.log(`Name ${value} is not a duplicate`);
+            return false;
+        }
+    } catch (err) {
+        console.log('error checking for duplicate name', err);
+        throw err;
+    }
 };
 
 module.exports = Team;
