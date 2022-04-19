@@ -41,12 +41,12 @@ Team.getAll = async (
     filterStr,
     sortCol,
     sortDir,
-    limitNum,
-    offsetNum,
+    limit,
+    offset,
 ) => {
     let query = 'SELECT * FROM teams';
     let filterQuery = ` WHERE ${filterCol} LIKE \'%${filterStr}%\'`;
-    let limitOffsetQuery = ` LIMIT ${limitNum} OFFSET ${offsetNum}`;
+    let limitOffsetQuery = ` LIMIT ${limit} OFFSET ${offset}`;
 
     if (filterCol != undefined && filterStr != undefined) {
         query += filterQuery;
@@ -58,14 +58,14 @@ Team.getAll = async (
         query += sortQuery;
     }
 
-    if (limitNum != undefined && offsetNum != undefined)
+    if (limit != undefined && offset != undefined)
         query += limitOffsetQuery;
     try {
         const conn = await connection;
         const res = await conn.query(query);
         return res[0];
     } catch (err) {
-        console.log('error getting all teams: ', err);
+        console.log('error while getting all teams: ', err);
         throw err;
     }
 };
@@ -84,7 +84,7 @@ Team.updateById = async (id, team) => {
             throw { kind: 'not_found' };
         }
     } catch (err) {
-        console.log('error updating by id: ', err);
+        console.log('error while updating by id: ', err);
         throw err;
     }
 };
@@ -100,7 +100,7 @@ Team.remove = async (id) => {
             throw { kind: 'not_found' };
         }
     } catch (err) {
-        console.log('error deleting team: ', err);
+        console.log('error while deleting team: ', err);
         throw err;
     }
 };
@@ -120,7 +120,7 @@ Team.checkDuplicateName = async (value) => {
             return false;
         }
     } catch (err) {
-        console.log('error checking for duplicate name', err);
+        console.log('error while checking for duplicate name', err);
         throw err;
     }
 };

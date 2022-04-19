@@ -34,7 +34,7 @@ exports.validate = (method) => {
 exports.create = async (req, res) => {
     if (!req.body) {
         res.status(400).send({
-            message: 'Content cannot be empty!',
+            message: 'Team cannot be empty.',
         });
     }
     const errors = validationResult(req);
@@ -55,7 +55,7 @@ exports.create = async (req, res) => {
     } catch (err) {
         res.status(500).send({
             message:
-                err.message || 'Some error occurred while creating the Team.',
+                err.message || 'An error occurred while creating the Team.',
         });
     }
 };
@@ -81,7 +81,7 @@ exports.findAll = async (req, res) => {
     } catch (err) {
         res.status(500).send({
             message:
-                err.message || 'Some error occured while retrieving all teams.',
+                err.message || 'An error occured while retrieving all teams.',
         });
     }
 };
@@ -100,7 +100,7 @@ exports.findOne = async (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    'Error retrieving Team with id ' + req.params.id,
+                    'Error while retrieving Team with id ' + req.params.id,
             });
         }
     }
@@ -109,7 +109,7 @@ exports.findOne = async (req, res) => {
 exports.update = async (req, res) => {
     if (!req.body) {
         res.status(404).send({
-            message: 'Content cannot be empty!',
+            message: 'Team cannot be empty.',
         });
     }
     const errors = validationResult(req);
@@ -124,7 +124,7 @@ exports.update = async (req, res) => {
     } catch (err) {
         if (err.kind === 'not_found') {
             res.status(404).send({
-                message: `Not found Team with id ${req.params.id}.`,
+                message: `Cannot find Team with id ${req.params.id}.`,
             });
         } else {
             res.status(500).send({
@@ -145,7 +145,7 @@ exports.delete = async (req, res) => {
             });
         } else {
             res.status(500).send({
-                message: 'Could not delete Team with id ' + req.params.id,
+                message: 'Cannot delete Team with id ' + req.params.id,
             });
         }
     }
