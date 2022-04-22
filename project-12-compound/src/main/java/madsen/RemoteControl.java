@@ -29,15 +29,9 @@ public class RemoteControl {
         System.out.printf("Added %s to remote slot %d\n", remoteCommandName, remoteControlSlot.getSlotNumber());
     }
 
-    public void pushOnButton(RemoteControlSlot remoteControlSlot) {
+    public void pressButton(RemoteControlSlot remoteControlSlot) {
         RemoteControlSlotFunction slot = controlSlots.get(remoteControlSlot.getSlotNumber() - 1);
-        System.out.printf("Pressing ON button for \"%s\" (Slot %d)\n", slot.getName(), remoteControlSlot.getSlotNumber());
-        slot.onButtonPress();
-    }
-
-    public void pushOffButton(RemoteControlSlot remoteControlSlot) {
-        RemoteControlSlotFunction slot = controlSlots.get(remoteControlSlot.getSlotNumber() - 1);
-        System.out.printf("Pressing OFF button for \"%s\" (Slot %d)\n", slot.getName(), remoteControlSlot.getSlotNumber());
-        slot.offButtonPress();
+        System.out.printf("Toggling button for \"%s\" (Slot %d)\n", slot.getName(), remoteControlSlot.getSlotNumber());
+        slot.toggleButtonPress();
     }
 }

@@ -11,7 +11,7 @@ public class FanState {
      * This function will set the first state to the LowState
      */
     public FanState() {
-        currentState = new TurningOff();
+        currentState = new Off();
     }
 
     /**
@@ -19,21 +19,15 @@ public class FanState {
      * @param state
      */
     public void setState(State state) {
+        System.out.println("Fan has been set to " + state.toString());
         currentState = state;
     }
 
-    /**
-     * This fucntion will print out the states
-     */
-    public void pull() {
-        currentState.pull(this);
+    public void toggle(State onState) {
+        currentState.toggle(this, onState);
     }
 
-    public boolean isOn() {
-        return !(currentState instanceof TurningOff);
-    }
-
-    public boolean isOff() {
-        return (currentState instanceof TurningOff);
+    public void cycle() {
+        currentState.cycle(this);
     }
 }

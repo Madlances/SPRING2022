@@ -8,7 +8,6 @@ package madsen;
  */
 public class ButtonFour implements Command{
     public FanState fanState;
-    public TurningOff turningOff;
 
     /**
      * Our constructor to get the fanstate
@@ -16,24 +15,13 @@ public class ButtonFour implements Command{
      */
     public ButtonFour(FanState fanState) {
         this.fanState = fanState;
-        this.turningOff = new TurningOff();
     }
 
     /**
-     * Our on function to cycle through the speeds
+     * cycles the fan state
      */
     @Override
-    public void on() {
-        fanState.pull();
-    }
-
-    /**
-     * Don't really need this function for Button 4 since it's cycling through, but we need it so
-     * the parent class doesn't complain
-     */
-    @Override
-    public void off() {
-        fanState.setState(turningOff);
-        turningOff.pull(fanState);
+    public void pressButton() {
+        fanState.cycle();
     }
 }

@@ -7,6 +7,5 @@ package madsen;
  */
 
 public interface Command {
-    void on();
-    void off();
+    void pressButton();
 }

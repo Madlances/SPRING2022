@@ -7,5 +7,6 @@ package madsen;
  */
 
 public interface State {
-    void pull(FanState fanState);
+    void toggle(FanState fanState, State onState);
+    void cycle(FanState fanState);
 }

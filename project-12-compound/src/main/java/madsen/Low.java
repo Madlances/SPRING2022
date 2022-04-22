@@ -7,11 +7,18 @@ package madsen;
  */
 
 public class Low implements State{
+    @Override
+    public void toggle(FanState fanState, State onState) {
+        fanState.setState(new Off());
+    }
 
     @Override
-    public void pull(FanState fanState) {
-        fanState.setState(new TurningOff());
-        System.out.println("Fan has been set to Low");
+    public void cycle(FanState fanState) {
+        fanState.setState(new Off());
     }
-    
+
+    @Override
+    public String toString() {
+        return "LOW";
+    }
 }

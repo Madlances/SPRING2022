@@ -7,11 +7,18 @@ package madsen;
  */
 
 public class Medium implements State{
+    @Override
+    public void toggle(FanState fanState, State onState) {
+        fanState.setState(new Off());
+    }
 
     @Override
-    public void pull(FanState fanState) {
+    public void cycle(FanState fanState) {
         fanState.setState(new Low());
-        System.out.println("Fan has been set to Medium");
     }
-    
+
+    @Override
+    public String toString() {
+        return "MEDIUM";
+    }
 }

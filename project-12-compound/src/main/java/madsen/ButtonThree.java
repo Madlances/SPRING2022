@@ -8,35 +8,20 @@ package madsen;
 
 public class ButtonThree implements Command{
 
-    public Low lowState;
     public FanState fanState;
-    public TurningOff turningOff;
 
     /**
      * our constructor to get the fan state
      */
     public ButtonThree(FanState fanState) {
-        this.lowState = new Low();
         this.fanState = fanState;
-        this.turningOff = new TurningOff();
     }
 
     /**
-     * sets the fan to low
+     * toggles the fan state
      */
     @Override
-    public void on() {
-        fanState.setState(lowState);
-        lowState.pull(fanState);
+    public void pressButton() {
+        fanState.toggle(new Low());
     }
-
-    /**
-     * sets the fan to high
-     */
-    @Override
-    public void off() {
-        fanState.setState(turningOff);
-        turningOff.pull(fanState);
-    }
-    
 }

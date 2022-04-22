@@ -20,17 +20,9 @@ public class RemoteControlSlotFunction {
         this.command = command;
     }
 
-    public void onButtonPress() {
+    public void toggleButtonPress() {
         if (command != null) {
-            command.on();
-        } else {
-            System.out.println("No command assigned to this slot");
-        }
-    }
-
-    public void offButtonPress() {
-        if (command != null) {
-            command.off();
+            command.pressButton();
         } else {
             System.out.println("No command assigned to this slot");
         }

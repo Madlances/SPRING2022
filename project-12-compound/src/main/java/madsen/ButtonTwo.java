@@ -8,36 +8,21 @@ package madsen;
 
 public class ButtonTwo implements Command{
 
-    public Medium mediumState;
     public FanState fanState;
-    public TurningOff turningOff;
 
     /**
      * Our constructor to get the fanstate
      * @param fanState
      */
     public ButtonTwo(FanState fanState) {
-        this.mediumState = new Medium();
         this.fanState = fanState;
-        this.turningOff = new TurningOff();
     }
 
     /**
-     * sets the fan to medium
+     * toggles the fan state
      */
     @Override
-    public void on() {
-         fanState.setState(mediumState);
-         mediumState.pull(fanState);
+    public void pressButton() {
+        fanState.toggle(new Medium());
     }
-
-    /**
-     * turns the fan off
-     */
-    @Override
-    public void off() {
-        fanState.setState(turningOff);
-        turningOff.pull(fanState);
-    }
-    
 }
