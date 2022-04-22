@@ -49,171 +49,133 @@ public class App
             System.out.print("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)\n");
             String nextLine = scanner.nextLine().toLowerCase();
             if (nextLine.equals("button 1")) {
-                if (fanState.isOn()) {
+                remoteControl.pushOnButton(RemoteControlSlot.ONE);;
+                System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                String nextString = scanner.nextLine().toLowerCase();
+                if (nextString.equals("button 1")) {
                     remoteControl.pushOffButton(RemoteControlSlot.ONE);
-                } else {
-                    remoteControl.pushOnButton(RemoteControlSlot.ONE);
-                }
-            } else if (nextLine.equals("button 2")) {
-                if (fanState.isOn()) {
-                    remoteControl.pushOffButton(RemoteControlSlot.TWO);
-                } else {
-                    remoteControl.pushOnButton(RemoteControlSlot.TWO);
-                }
-            } else if (nextLine.equals("button 3")) {
-                if (fanState.isOn()) {
-                    remoteControl.pushOffButton(RemoteControlSlot.THREE);
-                } else {
-                    remoteControl.pushOnButton(RemoteControlSlot.THREE);
-                }
-            } else if (nextLine.equals("button 4")) {
-                if (fanState.isOn()) {
-                    remoteControl.pushOffButton(RemoteControlSlot.FOUR);
-                } else {
-                    remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                    System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                } else if (nextString.equals("button 2") || nextString.equals("button 3") || nextString.equals("button 4")) {
+                    if (nextString.equals("button 2")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.TWO);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next = scanner.nextLine().toLowerCase();
+                        if (next.equals("button 1")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.ONE);
+                        }
+                    } else if (nextString.equals("button 3")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.THREE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next2 = scanner.nextLine().toLowerCase();
+                        if (next2.equals("button 1")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.ONE);
+                        }
+                    } else if (nextString.equals("button 4")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next3 = scanner.nextLine().toLowerCase();
+                        if (next3.equals("button 1")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.ONE);
+                        }
+                    }
                 }
             }
-
-            // if (nextLine.equals("button 1")) {
-            //     remoteControl.pushOnButton(RemoteControlSlot.ONE);;
-            //     System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     String nextString = scanner.nextLine().toLowerCase();
-            //     if (nextString.equals("button 1")) {
-            //         remoteControl.pushOffButton(RemoteControlSlot.ONE);
-            //         System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     } else if (nextString.equals("button 2") || nextString.equals("button 3") || nextString.equals("button 4")) {
-            //         if (nextString.equals("button 2")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.TWO);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next = scanner.nextLine().toLowerCase();
-            //             if (next.equals("button 1")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.ONE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 3")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.THREE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next2 = scanner.nextLine().toLowerCase();
-            //             if (next2.equals("button 1")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.ONE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 4")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next3 = scanner.nextLine().toLowerCase();
-            //             if (next3.equals("button 1")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.ONE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         }
-            //     }
-            // }
-            // else if (nextLine.equals("button 2")) {
-            //     remoteControl.pushOnButton(RemoteControlSlot.TWO);
-            //     System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     String nextString = scanner.nextLine().toLowerCase();
-            //     if (nextString.equals("button 2")) {
-            //         remoteControl.pushOffButton(RemoteControlSlot.TWO);
-            //         System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     } else if (nextString.equals("button 1") || nextString.equals("button 3") || nextString.equals("button 4")) {
-            //         if (nextString.equals("button 1")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.ONE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next = scanner.nextLine().toLowerCase();
-            //             if (next.equals("button 2")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.TWO);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 3")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.THREE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next2 = scanner.nextLine().toLowerCase();
-            //             if (next2.equals("button 2")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.TWO);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 4")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next3 = scanner.nextLine().toLowerCase();
-            //             if (next3.equals("button 2")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.TWO);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         }
-            //     }
-            // }
-            // else if (nextLine.equals("button 3")) {
-            //     remoteControl.pushOnButton(RemoteControlSlot.THREE);;
-            //     System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     String nextString = scanner.nextLine().toLowerCase();
-            //     if (nextString.equals("button 3")) {
-            //         remoteControl.pushOffButton(RemoteControlSlot.THREE);
-            //         System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     } else if (nextString.equals("button 1") || nextString.equals("button 2") || nextString.equals("button 4")) {
-            //         if (nextString.equals("button 1")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.ONE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next = scanner.nextLine().toLowerCase();
-            //             if (next.equals("button 3")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.THREE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 2")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.TWO);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next2 = scanner.nextLine().toLowerCase();
-            //             if (next2.equals("button 3")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.THREE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 4")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next3 = scanner.nextLine().toLowerCase();
-            //             if (next3.equals("button 3")) {
-            //                 remoteControl.pushOffButton(RemoteControlSlot.THREE);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         }
-            //     }
-            // }
-            // else if (nextLine.equals("button 4")) {
-            //     remoteControl.pushOnButton(RemoteControlSlot.FOUR);;
-            //     System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     String nextString = scanner.nextLine().toLowerCase();
-            //     if (nextString.equals("button 4")) {
-            //         remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //         System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //     } else if (nextString.equals("button 1") || nextString.equals("button 2") || nextString.equals("button 3")) {
-            //         if (nextString.equals("button 1")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.ONE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next = scanner.nextLine().toLowerCase();
-            //             if (next.equals("button 4")) {
-            //                 remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 2")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.TWO);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next2 = scanner.nextLine().toLowerCase();
-            //             if (next2.equals("button 4")) {
-            //                 remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         } else if (nextString.equals("button 3")) {
-            //             remoteControl.pushOnButton(RemoteControlSlot.THREE);
-            //             System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             String next3 = scanner.nextLine().toLowerCase();
-            //             if (next3.equals("button 4")) {
-            //                 remoteControl.pushOnButton(RemoteControlSlot.FOUR);
-            //                 System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
-            //             }
-            //         }
-            //     }
-            // }
+            else if (nextLine.equals("button 2")) {
+                remoteControl.pushOnButton(RemoteControlSlot.TWO);
+                System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                String nextString = scanner.nextLine().toLowerCase();
+                if (nextString.equals("button 2")) {
+                    remoteControl.pushOffButton(RemoteControlSlot.TWO);
+                    System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                } else if (nextString.equals("button 1") || nextString.equals("button 3") || nextString.equals("button 4")) {
+                    if (nextString.equals("button 1")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.ONE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next = scanner.nextLine().toLowerCase();
+                        if (next.equals("button 2")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.TWO);
+                        }
+                    } else if (nextString.equals("button 3")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.THREE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next2 = scanner.nextLine().toLowerCase();
+                        if (next2.equals("button 2")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.TWO);
+                        }
+                    } else if (nextString.equals("button 4")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next3 = scanner.nextLine().toLowerCase();
+                        if (next3.equals("button 2")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.TWO);
+                        }
+                    }
+                }
+            }
+            else if (nextLine.equals("button 3")) {
+                remoteControl.pushOnButton(RemoteControlSlot.THREE);;
+                System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                String nextString = scanner.nextLine().toLowerCase();
+                if (nextString.equals("button 3")) {
+                    remoteControl.pushOffButton(RemoteControlSlot.THREE);
+                    System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                } else if (nextString.equals("button 1") || nextString.equals("button 2") || nextString.equals("button 4")) {
+                    if (nextString.equals("button 1")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.ONE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next = scanner.nextLine().toLowerCase();
+                        if (next.equals("button 3")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.THREE);
+                        }
+                    } else if (nextString.equals("button 2")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.TWO);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next2 = scanner.nextLine().toLowerCase();
+                        if (next2.equals("button 3")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.THREE);
+                        }
+                    } else if (nextString.equals("button 4")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next3 = scanner.nextLine().toLowerCase();
+                        if (next3.equals("button 3")) {
+                            remoteControl.pushOffButton(RemoteControlSlot.THREE);
+                        }
+                    }
+                }
+            }
+            else if (nextLine.equals("button 4")) {
+                remoteControl.pushOnButton(RemoteControlSlot.FOUR);;
+                System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                String nextString = scanner.nextLine().toLowerCase();
+                if (nextString.equals("button 4")) {
+                    remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                    System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                } else if (nextString.equals("button 1") || nextString.equals("button 2") || nextString.equals("button 3")) {
+                    if (nextString.equals("button 1")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.ONE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next = scanner.nextLine().toLowerCase();
+                        if (next.equals("button 4")) {
+                            remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        }
+                    } else if (nextString.equals("button 2")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.TWO);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next2 = scanner.nextLine().toLowerCase();
+                        if (next2.equals("button 4")) {
+                            remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        }
+                    } else if (nextString.equals("button 3")) {
+                        remoteControl.pushOnButton(RemoteControlSlot.THREE);
+                        System.out.println("Would you like to Press Button 1, Button 2, Button 3, or Button 4. (Press 'q' to quit)");
+                        String next3 = scanner.nextLine().toLowerCase();
+                        if (next3.equals("button 4")) {
+                            remoteControl.pushOnButton(RemoteControlSlot.FOUR);
+                        }
+                    }
+                }
+            }
             else if (nextLine.equals("q")) {
                 break;
             }
