@@ -1,49 +1,43 @@
 
-<!-- Form Rendering ejs Template 
-Notes:
-1.  We will NOT be doing any CUSTOM validation this version.
-2.  Instead, we will be writing the inline validation attributes into the dom using the ejs file
-3.  This will be driven by the view model.  This field definition shows how I set it up:
-    {
-        label: "Team Name",
-        name: "name",             //name field, write this as both name and id
-        tag: "input",             //tag type
-        defaultValue:"",          //default value of input, 'value' tag will get either data being edited or default value
-        //attributes is a simple associative array containing any additional attributes you wish to add during render
-        attributes: { 
-            type: "text",
-            placeholder: "Enter your Team name here",
-            class: "form-control"
-        },
-        //validation rules.  If required, write the requiredMessage into the .invalid-feedback div
-        validation: {
-            required: true,
-            requiredMessage: "Team Name is required"
-        }
-    },
-  4.  You can check out 'example_form_output.html' for an example of my actual form output
--->
+<!-- Form Rendering ejs Template -->
 <div class="row">
   <div class="col-sm-12">
     <form id="<%=view.viewModel.form.id%>" autocomplete="off" method="<%=view.viewModel.form.method%>" action="<%=view.viewModel.form.actionUrl%>" novalidate>
 
-      <h1 class="title"><%=view.viewModel.form.currentItemId?view.viewModel.form.editFormTitle:view.viewModel.form.addFormTitle%></h1>
+      <h1><%=view.viewModel.form.currentItemId?view.viewModel.form.editFormTitle:view.viewModel.form.addFormTitle%></h1>
       <div class="form-row">
       <!-- Iterate the 'fields' array and output the form labels and inputs
         with their proper attributes (defined in view model).
-        For required fields, write the validation message into the div with the '.invalid-feedback' class
-        One special case you need to take into account is the 'id' field which has the type='hidden' class.
-        You still need to manually hide that form-group so it doesn't show to users.  the 'd-none' class can work for that
       -->
+        <% let firstItem = true %> 
         <% view.viewModel.form.fields.forEach( function(field){ %>
+          <% if (firstItem) { %>
             <div class="col-md-12 mb-3">
-                <label for="<%=field.label%>"><%=field.label%></label>
-                 <% if (field.attributes.pattern == undefined) { %> 
+              <label for="<%=field.label%>"><%=field.label%></label>
+              <% if (field.attributes.pattern == undefined) { %> 
                 <% if (field.validation.required) {%> 
-                  <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
-                  placeholder="<%= field.attributes.placeholder %>" 
-                  title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
-                  type="<%=field.attributes.type%>" required="<%= field.validation.required %>">
+                  <% if (field.tag == 'select') { %> 
+                    <select name="<%= field.name %>" id="<%= field.name %>" class="<%= field.attributes.class %> " required="<%= field.attributes.required %>" >
+                      <% if (field.defaultValue == -1) { %> 
+                        <option value="" id="coachPlaceHolderOption" selected><%= field.attributes.placeholder %> </option>
+                      <% } else { %> 
+                        <option value="" id="coachPlaceHolderOption"><%= field.attributes.placeholder %> </option>
+                      <% } %> 
+                      <% let coaches = view.storage.lookups %> 
+                      <% for (let coach of coaches) { %> 
+                        <% if (field.defaultValue == coach.value) { %> 
+                          <option value="<%= coach.label %>" selected><%= coach.label %> </option>
+                        <% } else { %> 
+                          <option value="<%= coach.label %>"><%= coach.label %> </option>
+                        <% } %> 
+                      <% } %> 
+                    </select>
+                  <% } else { %> 
+                    <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
+                    placeholder="<%= field.attributes.placeholder %>" 
+                    title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
+                    type="<%=field.attributes.type%>" required="<%= field.validation.required %>">
+                  <% } %> 
                 <% } else {%>
                   <input name="<%= field.name %> " id="<%= field.name %>" value="<%= field.defaultValue %>" 
                   placeholder="<%= field.attributes.placeholder %>" 
@@ -56,8 +50,9 @@ Notes:
                 title="<%= field.attributes.title %> " class="<%= field.attributes.class %>" 
                 type="<%=field.attributes.type%>" required="<%= field.validation.required %>">
               <% } %> 
-                <div class="invalid-feedback"><%=field.validation.requiredMessage%></div>
+              <div class="invalid-feedback"><%= field.validation.requiredMessage %> </div>
             </div>
+          <% } %>
         <% }) %>
       
       </div>

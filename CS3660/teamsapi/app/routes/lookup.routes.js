@@ -14,7 +14,7 @@ module.exports = (app) => {
             }
             const conn = await connection;
             let result = await conn.query(query);
-            res.send(result);
+            res.send(result[0]);
         } catch (err) {
             res.send(err);
             console.log(err.message);

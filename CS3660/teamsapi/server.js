@@ -6,6 +6,7 @@ const lookupRoutes = require('./app/routes/lookup.routes.js');
 
 var corsOptions = {
     origin: 'amazonaws.com',
+    origin: 'http://127.0.0.1:5500',
 };
 app.use(cors(corsOptions));
 // parse requests of content-type

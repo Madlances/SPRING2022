@@ -220,9 +220,7 @@ export default class ListView extends View {
       title: function () {
         var index = $(this).attr("data-id");
         let item = that.data[that.storage.getItemIndex(index)];
-        return `<img class="img-fluid rounded-circle" src="${
-          item[that.view.list.logoCol]
-        }" width="40" height="40">  ${item[that.view.list.nameCol]} `;
+        return `<img class="img-fluid rounded-circle" src="images/Smash_Ball.png" width="40" height="40">  ${item[that.view.list.nameCol]} `;
       },
       content: function () {
         var index = $(this).attr("data-id");

@@ -9,4 +9,20 @@ export default class Utilities {
         }
         return this.files[url]
     }
+
+    cloneObject(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+
+    getQueryString(options) {
+        let queryString = '?'
+        let queryList = []
+        for (let key in options) {
+        if (options[key]) {
+            queryList.push(`${key}=${options[key]}`)
+        }
+        }
+        queryString += queryList.join('&')
+        return queryString
+    }
 }

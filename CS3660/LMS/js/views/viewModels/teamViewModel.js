@@ -16,8 +16,8 @@ var teamViewModel = {
     options: {
       sortCol: "name",
       sortDir: "asc",
-      limit: "",
-      offset: "",
+      limit: 100,
+      offset: null,
       filterCol: "",
       fiterStr: "",
     },
@@ -36,23 +36,20 @@ var teamViewModel = {
         name: "name",
         popover: "true",
       },
-
       {
         label: "Coach Name",
         name: "coachName",
-        popover: "true",
+        popover: "true"
       },
-
       {
         label: "Coach Phone",
         name: "coachPhone",
-        popover: "true",
+        popover: "true"
       },
-
       {
-        label: "# of Players",
-        name: "numPlayers",
-        popover: "true",
+        label: "Coach Email",
+        name: "coachEmail",
+        popover: "true"
       },
     ],
   },
@@ -103,18 +100,19 @@ var teamViewModel = {
         },
       },
       {
-        label: "Coach Name",
-        name: "coachName",
-        tag: "input",
-        defaultValue: "",
+        label: "Coach",
+        lookupName: "coaches",     //lookup name to use for /lookups/:lookupName  API
+        name: "coach_id",
+        tag: "select",
+        defaultValue: -1, //default value for dropdown, usually the value that matches 'Select a Coach'
         attributes: {
-          type: "text",
-          placeholder: "Coach name",
-          class: "form-control",
+          id: "coach_id",
+          name: "coach_id",
+          placeholder: "Select a Coach"
         },
         validation: {
           required: true,
-          requiredMessage: "Coach Name is required",
+          requiredMessage: "Coach is required"
         },
       },
       {
@@ -135,23 +133,6 @@ var teamViewModel = {
         validation: {
           required: true,
           requiredMessage: "Coach Phone is required",
-        },
-      },
-      {
-        label: "Number of Player(s)",
-        name: "numPlayers",
-        tag: "input",
-        defaultValue: "",
-        attributes: {
-          type: "number",
-          pattern: "^[0-9]*(?:.[0-9]*)?",
-          placeholder: "Number of Player(s)",
-          title: "Must be a number greater than 0",
-          class: "form-control",
-        },
-        validation: {
-          required: true,
-          requiredMessage: "A Number of Player(s) is required",
         },
       },
       {
@@ -183,6 +164,7 @@ var teamViewModel = {
           required: true,
           requiredMessage: "Team Note is required",
         },
+        
       },
     ],
   },
