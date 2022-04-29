@@ -2,7 +2,7 @@ import mockTeamData from "../../models/mock/mockTeamData.js";
 var teamViewModel = {
   entity: "teams",
   entitySingle: "team",
-  wrapperContainerId: "teamPageWrapper",
+  wrapperContainerId: "app_container",
   wrapperTemplateUrl: "js/views/partials/listPageWrapper.ejs",
   listContainerId: "tableContainer",
   listTemplateUrl: "js/views/partials/listView.ejs",
@@ -113,41 +113,6 @@ var teamViewModel = {
         validation: {
           required: true,
           requiredMessage: "Coach is required"
-        },
-      },
-      {
-        label: "Coach Phone",
-        name: "coachPhone",
-        tag: "input",
-        defaultValue: "",
-        attributes: {
-          type: "text",
-          placeholder: "Coach phone",
-          //pattern will allow you to customize your validation.
-          pattern:
-            "[+]?[1 ]?[-]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}",
-          //use the title tag to explain the format required
-          title: "Phone Number (Format: +1 (999)999-9999)",
-          class: "form-control",
-        },
-        validation: {
-          required: true,
-          requiredMessage: "Coach Phone is required",
-        },
-      },
-      {
-        label: "Coach Email",
-        name: "coachEmail",
-        tag: "input",
-        defaultValue: "",
-        attributes: {
-          type: "email",
-          placeholder: "Coach Email",
-          class: "form-control",
-        },
-        validation: {
-          required: true,
-          requiredMessage: "Coach Email is required",
         },
       },
       {

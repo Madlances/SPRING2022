@@ -1,63 +1,113 @@
-<main class="">
-    <div class="row">
-      <div class="col-4">
-            <h1 class="text-white"> <%=view.list.listTitle%> </h1>
-          </div>
-           <div class="col-8 d-flex justify-content-end">
-              <input id="searchInput" class="w-75 me-2 p-1" placeholder="Search...">
-              <button id="clearSearch" class="btn btn-primary">Clear</button>
-              <span style="width:0.75em;"> </span>
-              <button id="addTeam" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%=view.formContainerId%>">Create Team</button>
-            </div>
-       
+<div class="row">
+  <div class="col-sm-8">
+    <main class="shadow-lg rounded-3 p-3 bg-secondary bg-opacity-75 bg-gradient text-black mt-2 mb-2">
+      <div class="row">
+        <div class="text-white col-4">
+          <h1>
+            <%=view.list.listTitle%>
+          </h1>
         </div>
+        <div class="col-8 d-flex justify-content-end">
+          <input id="searchInput" class="w-75 me-2 p-1" placeholder="Search...">
+          <button id="clearSearch" class="btn btn-primary">Clear</button>
+          <span style="width:0.75em;"> </span>
+          <button id="addTeam" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#<%=view.formContainerId%>">Create Team</button>
+        </div>
+
+      </div>
       <div class="col-12">
         <div id="<%=view.alertContainerId%>" class="mt-2"></div>
         <div id="tableContainer" class="mt-2">
-  
+
         </div>
         <button id="resetView" class="btn btn-primary clear-search-btn ml-2" hidden="hidden">Reset View</button>
       </div>
-    </div>
+  </div>
   </main>
+  <div class="col-4 shadow-lg rounded-3 p-3 mb-3 bg-secondary bg-gradient bg-opacity-75 text-white mt-2 mb-2"
+    id="results">
+    <h2 class="bg-black bg-gradient text-center">Results</h2>
+    <table class="table table-hover text-white" id="resultsTable">
+      <thead>
+        <tr>
+          <th class="bg-black bg-gradiant" scope="col">Place</th>
+          <th class="bg-black bg-gradiant" scope="col">Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">1</th>
+          <th class="bg-black bg-opacity-50" scope="row">The Pink Puffs</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">2</th>
+          <th class="bg-black bg-opacity-50" scope="row">Buffet's Bane</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">3</th>
+          <th class="bg-black bg-opacity-50" scope="row">Echoes</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">4</th>
+          <th class="bg-black bg-opacity-50" scope="row">Corrupted Visions</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">5</th>
+          <th class="bg-black bg-opacity-50" scope="row">Plant Gang!</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">6</th>
+          <th class="bg-black bg-opacity-50" scope="row">It's a Mii, Mario!</th>
+        </tr>
+        <tr>
+          <th class="bg-black bg-opacity-50" scope="row">7</th>
+          <th class="bg-black bg-opacity-50" scope="row">Ghost Hunters</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
 
-  <!-- Form Modal -->
-  <div class="modal" id="formModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <!-- Modal Body -->
-        <div class="modal-body rounded-circle" id="<%=view.form.containerId%>"></div>
+<!-- Form Modal -->
+<div class="modal" id="formModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
+      <!-- Modal Body -->
+      <div class="modal-body rounded-circle" id="<%=view.form.containerId%>"></div>
     </div>
   </div>
-  
-  <!-- Delete Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Delete Team Item</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          Are you sure you want to delete this Team?
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <!-- data-bs-dismiss="modal" tells the javscript to hide the modal on click, both 'Yes' and 'No' buttons will hide modal.  I'm placing a specific event handler on the 'Yes' button below-->
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No.</button>
-          <button id="yesButton" type="button" class="btn btn-success" data-bs-dismiss="modal">Yes!</button>
-        </div>
-  
+</div>
+
+<!-- Delete Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Team Item</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want to delete this Team?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <!-- data-bs-dismiss="modal" tells the javscript to hide the modal on click, both 'Yes' and 'No' buttons will hide modal.  I'm placing a specific event handler on the 'Yes' button below-->
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No.</button>
+        <button id="yesButton" type="button" class="btn btn-success" data-bs-dismiss="modal">Yes!</button>
+      </div>
+
     </div>
   </div>
+</div>

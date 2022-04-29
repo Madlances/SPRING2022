@@ -45,7 +45,7 @@ Team.getAll = async (
     offset,
 ) => {
     // similar to what we do in the lookup.routes.js, so we can get the right data to show up in the table
-    let query = "SELECT t.id, t.name, CONCAT(p.first_name, ' ',  p.last_name) AS coachName, p.email AS coachEmail, p.phone as coachPhone, t.notes FROM teams t JOIN people p ON t.coach_id = p.team_id WHERE p.person_type = 'coach'"
+    let query = "SELECT t.id, t.name, CONCAT(p.first_name, ' ',  p.last_name) AS coachName, p.email AS coachEmail, t.coach_id, p.phone as coachPhone, t.notes FROM teams t JOIN people p ON t.coach_id = p.id WHERE p.person_type = 'coach'"
     let filterQuery = ` AND t.name LIKE \'%${filterStr}%\'`
     let limitOffsetQuery = ` LIMIT ${limit} OFFSET ${offset}`
 
